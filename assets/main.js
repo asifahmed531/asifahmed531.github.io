@@ -2,7 +2,6 @@
 (function () {
   'use strict';
 
-  /* ---- current year ---- */
   var yr = document.getElementById('yr');
   if (yr) yr.textContent = new Date().getFullYear();
 
@@ -22,26 +21,6 @@
     });
   }
 
-  /* ---- scroll spy: highlight the section you're reading ---- */
-  var navAnchors = Array.prototype.slice.call(
-    document.querySelectorAll('.nav-links a[href^="#"]')
-  );
-  var sections = navAnchors
-    .map(function (a) { return document.querySelector(a.getAttribute('href')); })
-    .filter(Boolean);
-
-  if (sections.length && 'IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) {
-        if (!en.isIntersecting) return;
-        navAnchors.forEach(function (a) {
-          a.classList.toggle('active', a.getAttribute('href') === '#' + en.target.id);
-        });
-      });
-    }, { rootMargin: '-70px 0px -65% 0px', threshold: 0 });
-    sections.forEach(function (s) { io.observe(s); });
-  }
-
   /* ---- publication filter ---- */
   var filterBar = document.querySelector('.pub-filter');
   if (filterBar) {
@@ -59,7 +38,6 @@
         p.hidden = !(f === 'all' || tags.indexOf(f) !== -1);
       });
 
-      /* hide a year heading whose papers are all filtered out */
       document.querySelectorAll('.pub-year').forEach(function (h) {
         var list = h.nextElementSibling;
         if (!list) return;
@@ -69,6 +47,18 @@
         h.hidden = !any;
         list.hidden = !any;
       });
+    });
+  }
+
+  /* ---- headshot: fall back to initials if the image is missing ---- */
+  var photo = document.querySelector('img.photo');
+  if (photo) {
+    photo.addEventListener('error', function () {
+      var ph = document.createElement('div');
+      ph.className = 'photo-ph';
+      ph.setAttribute('aria-hidden', 'true');
+      ph.textContent = 'AJ';
+      photo.replaceWith(ph);
     });
   }
 
@@ -83,6 +73,6 @@
         out.textContent = d.count + ' visits';
         out.hidden = false;
       })
-      .catch(function () { /* counter is decorative — stay silent */ });
+      .catch(function () { /* decorative — stay silent */ });
   }
 })();
