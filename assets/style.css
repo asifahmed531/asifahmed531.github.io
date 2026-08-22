@@ -92,7 +92,7 @@ ul{margin:0;padding:0}
   padding:7px 15px 7px 13px;border-radius:99px;
   background:var(--blue-soft);border:1px solid rgba(18,87,196,.28);
   color:var(--blue);font-size:.875rem;font-weight:600;letter-spacing:.005em;
-  margin-bottom:18px;
+  margin:4px 0 16px;
   animation:otwGlow 2.4s ease-in-out infinite;
 }
 .otw:hover{text-decoration:none;color:var(--blue)}
