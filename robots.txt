@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://asifahmed531.github.io/sitemap.xml
