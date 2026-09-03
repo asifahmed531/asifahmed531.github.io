@@ -340,3 +340,21 @@ main{counter-reset:walkstep}
 @media print{
   .walk,.readbar{display:none}
 }
+
+/* Lead figure: a detail page opens on the work itself, directly
+   under the one-line summary. */
+.paper-hero{
+  margin:24px 0 0;max-width:74ch;
+  border:1px solid var(--border);border-radius:var(--radius);
+  overflow:hidden;background:var(--bg-sunk);
+}
+.paper-hero img{
+  width:100%;display:block;
+  /* A lead figure is a banner, not the whole figure: tall images are
+     cropped here and shown in full under "Figures from the paper". */
+  max-height:360px;object-fit:cover;object-position:center;
+}
+.paper-hero figcaption{
+  padding:9px 14px;font-size:.82rem;color:var(--text-mute);
+  background:var(--surface);border-top:1px solid var(--border);
+}
