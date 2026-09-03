@@ -189,6 +189,19 @@ ul{margin:0;padding:0}
 .card p:last-child{margin-bottom:0}
 .card .kicker{display:block;font-family:var(--font-body);font-size:.7rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--accent);margin-bottom:9px}
 
+
+/* ---------- clickable cards ---------- */
+.card{position:relative}
+.card-title-link{color:var(--text)}
+.card-title-link:hover{color:var(--accent);text-decoration:none}
+.card-title-link::after{content:"";position:absolute;inset:0;border-radius:var(--radius)}
+.card:has(.card-title-link){cursor:pointer}
+.card:has(.card-title-link):hover{border-color:var(--accent);box-shadow:var(--shadow)}
+.card .go{
+  display:inline-block;margin-top:4px;font-size:.83rem;font-weight:600;color:var(--accent);
+}
+.card:hover .go{text-decoration:underline;text-underline-offset:2px}
+
 /* ---------- publications ---------- */
 .pub-filter{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:22px}
 .pub-filter button{

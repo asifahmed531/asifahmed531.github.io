@@ -15,8 +15,10 @@ edit here is live within a minute of pushing.
 index.html          Home — photo, intro, recent news, research, selected papers
 about.html          Full bio, education (both advisors), experience, memberships
 news.html           Full news archive
-research.html       Research threads, tools & methods, funding
-publications.html   All 9 papers with publisher links, DOIs and free PDFs
+research.html       The four projects (each tile opens its own page), tools, funding
+publications.html   All 10 papers with publisher links, DOIs and free PDFs
+papers/             One visual summary page per paper
+projects/           One page per research project, tying its papers together
 teaching.html       Courses taught
 contact.html        Contact details and CV download
 404.html            Not-found page
@@ -36,6 +38,10 @@ The `<span class="new">New</span>` tag is optional.
 **Add a publication** — copy an existing `<li class="pub">` block into the right year group
 in `publications.html`. The `data-tags` attribute drives the filter buttons:
 `ar` (AR/XR/MR), `ml` (machine learning), `first` (you are first author).
+
+**Add a paper or project page** — copy the closest existing file in `papers/` or `projects/`
+and edit it, then add a `<li>` link on `publications.html` or a tile on `research.html`,
+and a `<url>` entry in `sitemap.xml`.
 
 **Replace the headshot** — drop a new square-ish photo at `assets/photo.jpg`.
 If the file is missing the page falls back to an "AJ" placeholder automatically.

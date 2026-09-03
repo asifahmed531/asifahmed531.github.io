@@ -186,3 +186,70 @@
   .paper-links,.pnav{display:none}
   .chart,.stat,.flow li,.figs figure{break-inside:avoid}
 }
+
+/* ---------- "part of" chip ---------- */
+.partof{margin:16px 0 0;font-size:.88rem;color:var(--text-mute)}
+.partof a{font-weight:600}
+
+/* ---------- papers in a project ---------- */
+.pcards{display:grid;gap:14px;grid-template-columns:1fr;list-style:none}
+@media (min-width:760px){.pcards{grid-template-columns:1fr 1fr}}
+.pcards a{
+  display:block;height:100%;background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--radius);padding:18px 20px;color:inherit;
+  transition:border-color .15s,box-shadow .15s,transform .15s;
+}
+.pcards a:hover{border-color:var(--accent);box-shadow:var(--shadow);transform:translateY(-2px);text-decoration:none}
+.pcards .yr{font-size:.72rem;font-weight:700;letter-spacing:.08em;color:var(--accent);margin-right:9px}
+.pcards .vn{font-size:.75rem;color:var(--text-mute);letter-spacing:.02em}
+.pcards h3{font-size:1rem;margin:8px 0 6px;line-height:1.35}
+.pcards p{font-size:.88rem;color:var(--text-soft);margin:0 0 10px}
+.pcards .go{font-size:.8rem;font-weight:600;color:var(--accent)}
+
+/* ---------- timeline ---------- */
+.tl{list-style:none;margin:0;padding:0;counter-reset:tlc}
+.tl li{display:grid;grid-template-columns:112px 1fr;gap:20px;padding:0 0 22px;position:relative}
+.tl li::before{
+  content:"";position:absolute;left:120px;top:9px;bottom:-9px;width:1px;background:var(--border);
+}
+.tl li:last-child{padding-bottom:0}
+.tl li:last-child::before{display:none}
+.tl li::after{
+  content:"";position:absolute;left:116px;top:6px;width:9px;height:9px;border-radius:50%;
+  background:var(--accent);border:2px solid var(--bg);
+}
+.tl-stamp{font-size:.8rem;font-weight:700;color:var(--text-mute);text-align:right;padding-top:1px;letter-spacing:.02em}
+.tl-body{padding-left:22px}
+.tl-body h3{font-size:1rem;margin:0 0 4px}
+.tl-body p{font-size:.9rem;color:var(--text-soft);margin:0}
+@media (max-width:640px){
+  .tl li{grid-template-columns:1fr;gap:2px;padding-left:20px}
+  .tl li::before{left:4px;top:14px}
+  .tl li::after{left:0;top:11px}
+  .tl-stamp{text-align:left}
+  .tl-body{padding-left:0}
+}
+
+/* ---------- instrument matrix ---------- */
+.mx-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--border);border-radius:var(--radius);background:var(--surface)}
+table.mx{border-collapse:collapse;width:100%;min-width:640px;font-size:.87rem}
+table.mx caption{caption-side:bottom;text-align:left;font-size:.82rem;color:var(--text-mute);padding:10px 16px 12px}
+table.mx th,table.mx td{padding:10px 14px;border-bottom:1px solid var(--border);text-align:center;vertical-align:top}
+table.mx thead th{
+  font-size:.74rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+  color:var(--text-mute);background:var(--bg-sunk);white-space:nowrap;
+}
+table.mx tbody th{text-align:left;font-weight:600;color:var(--text);white-space:normal;min-width:210px}
+table.mx tbody tr:last-child th,table.mx tbody tr:last-child td{border-bottom:0}
+table.mx tbody tr:hover td,table.mx tbody tr:hover th{background:var(--bg-soft)}
+.mx-sub{display:block;font-weight:400;font-size:.79rem;color:var(--text-mute);margin-top:2px}
+table.mx .yes{color:var(--s3);font-weight:700;font-size:1.05rem}
+
+/* ---------- call to action ---------- */
+.cta{margin:22px 0 0;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.btn-solid{
+  display:inline-block;background:var(--accent);color:#fff;padding:10px 20px;border-radius:var(--radius-sm);
+  font-size:.9rem;font-weight:600;
+}
+.btn-solid:hover{background:var(--accent-hover);color:#fff;text-decoration:none}
+.cta-note{font-size:.85rem;color:var(--text-mute)}

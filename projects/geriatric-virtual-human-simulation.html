@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Embodied Virtual Human Simulation for Caregiver Training &mdash; Asif Ahmmed Joy</title>
+<meta name="description" content="An NSF FW-HTF project: an aware embodied geriatric patient in augmented reality for caregiver soft-skills training, and the six papers that built and evaluated it.">
+<meta name="author" content="Asif Ahmmed Joy">
+<link rel="canonical" href="https://asifahmmedjoy.github.io/projects/geriatric-virtual-human-simulation.html">
+<meta name="color-scheme" content="light">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Embodied Virtual Human Simulation for Caregiver Training &mdash; Asif Ahmmed Joy">
+<meta property="og:description" content="An NSF FW-HTF project: an aware embodied geriatric patient in augmented reality for caregiver soft-skills training, and the six papers that built and evaluated it.">
+<meta property="og:url" content="https://asifahmmedjoy.github.io/projects/geriatric-virtual-human-simulation.html">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%239d2235'/><text y='.9em' x='50%25' text-anchor='middle' font-size='62' font-family='Georgia,serif' fill='white'>A</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css?v=4">
+<link rel="stylesheet" href="../assets/paper.css?v=1">
+<!-- Analytics: GoatCounter (privacy-friendly, no cookies) -->
+<script>window.GOATCOUNTER_CODE = "asifahmmedjoy";</script>
+<script data-goatcounter="https://asifahmmedjoy.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</head>
+<body class="viz-root">
+<a class="skip" href="#main">Skip to content</a>
+
+<nav class="nav">
+  <div class="nav-in">
+    <a class="nav-brand" href="../index.html">Asif Ahmmed Joy</a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="navlinks">Menu</button>
+    <ul class="nav-links" id="navlinks">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../about.html">About</a></li>
+      <li><a href="../files/Asif_Ahmmed_Joy_CV.pdf">CV</a></li>
+      <li><a href="../news.html">News</a></li>
+      <li><a href="../research.html" aria-current="page">Research</a></li>
+      <li><a href="../publications.html">Publications</a></li>
+      <li><a href="../teaching.html">Teaching</a></li>
+      <li><a href="../contact.html">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="main">
+<header class="paper-head"><div class="wrap">
+  <p class="crumb"><a href="../research.html">Research</a> &middot; NSF FW-HTF &middot; 2022&ndash;present</p>
+  <h1>Embodied Virtual Human Simulation for Caregiver Training</h1>
+  <p class="paper-authors">Student team lead &middot; New Jersey Institute of Technology, University of Central Florida, University of Delaware</p>
+  <p class="paper-venue">Supported by the U.S. National Science Foundation, Future of Work at the Human-Technology Frontier, awards #2222661 / #2222662 / #2222663. Six peer-reviewed papers to date.</p>
+  <ul class="paper-links">
+    <li><a class="" href="#papers" rel="noopener">Papers in this project</a></li>
+    <li><a class="back" href="../research.html">All projects</a></li>
+    <li><a class="back" href="../publications.html">Publications</a></li>
+  </ul>
+  <p class="thesis">A life-sized older woman stands by the bed in a HoloLens. She knows the caregiver&rsquo;s name, notices the colour of their scrubs, and asks them to switch the lamp off. The project runs from the interviews that decided what she should say, through building her, to measuring what changes in the people who train with her.</p>
+</div></header>
+<section class="p-sec"><div class="wrap">
+  <h2>At a glance</h2>
+  <ul class="stats">
+    <li class="stat hi"><span class="k">Peer-reviewed papers</span><span class="v">6</span><span class="n">IEEE ISMAR, IEEE VR, ACM IVA, ICQE &times;3</span></li>
+    <li class="stat"><span class="k">NSF awards</span><span class="v">3</span><span class="n">FW-HTF collaborative research</span></li>
+    <li class="stat"><span class="k">Universities</span><span class="v">3</span><span class="n">NJIT &middot; UCF &middot; Delaware</span></li>
+    <li class="stat"><span class="k">Platform</span><span class="v">HoloLens 2</span><span class="n">Unity 3D, C#, MRTK</span></li>
+  </ul>
+</div></section>
+<section class="p-sec p-sec-alt"><div class="wrap">
+  <h2>Why the project exists</h2>
+  <p class="sub">The figures the papers open with.</p>
+  <ul class="specs">
+    <li><span class="v">&gt;33%</span><span class="k">Turnover in geriatric care&hellip;</span></li>
+    <li><span class="v">up to 70%</span><span class="k">&hellip;and in skilled nursing facilities</span></li>
+    <li><span class="v">67M</span><span class="k">People over 60 currently needing care</span></li>
+    <li><span class="v">34.2%</span><span class="k">Growth in the US population aged 65+ over a decade</span></li>
+  </ul><p class="sub" style="margin:16px 0 0">Two of the most commonly named causes of that turnover are a lack of communication skills and inadequate training. Mannequins can simulate a body; they cannot hold a conversation, and hired actors are hard to schedule and harder to keep in character. That gap is what the simulation is for.</p>
+</div></section>
+<section class="p-sec"><div class="wrap">
+  <h2>How she works</h2>
+  <p class="sub">One Unity 3D framework, four moving parts. Full detail lives on the individual paper pages.</p>
+  <ul class="flow c4">
+    <li><h3>The character</h3><p>An older woman modelled, textured and rigged in Autodesk Maya: 778,092 vertices, a 67-joint skeleton, and blend shapes for thirteen viseme groups and a set of expressions.</p></li>
+    <li><h3>A hidden operator</h3><p>Wizard-of-Oz: a human controller listens from behind a room divider and picks each reply from categorised button panels built automatically out of a spreadsheet.</p></li>
+    <li><h3>Voice, face and body together</h3><p>A custom Unity plugin over the SALSA LipSync suite fires lip sync, facial expression and body gesture in step with the chosen audio clip.</p></li>
+    <li><h3>The illusion of awareness</h3><p>She greets people by name, comments on what they are wearing, recalls the earlier conversation, and switches a lamp and a radio on and off.</p></li>
+  </ul><div style="margin-top:18px"><ul class="specs">
+    <li><span class="v">778,092</span><span class="k">Vertices</span></li>
+    <li><span class="v">719,428</span><span class="k">Faces</span></li>
+    <li><span class="v">67</span><span class="k">Skeleton joints</span></li>
+    <li><span class="v">2048&times;2048</span><span class="k">Skin textures</span></li>
+    <li><span class="v">13</span><span class="k">Viseme groups</span></li>
+    <li><span class="v">TCP sockets</span><span class="k">HoloLens as server, PC as client</span></li>
+  </ul></div>
+</div></section>
+<section class="p-sec p-sec-alt"><div class="wrap">
+  <h2>How the project unfolded</h2>
+  <p class="sub">Each step is a paper; the arc is need-finding, then building, then three different ways of asking whether it worked.</p>
+  <ol class="tl">
+    <li><span class="tl-stamp">2022</span><div class="tl-body"><h3>Joined as student team lead</h3><p>The NSF FW-HTF collaboration between NJIT, the University of Central Florida and the University of Delaware begins.</p></div></li>
+    <li><span class="tl-stamp">Before any code</span><div class="tl-body"><h3>Ten professional caregivers interviewed</h3><p>Hour-long semi-structured interviews, 31 open questions, transcribed and coded, and deliberately run <em>before</em> the training content was written.</p></div></li>
+    <li><span class="tl-stamp">Mar 2024</span><div class="tl-body"><h3>The system demonstrated at IEEE VR</h3><p>A two-page demo paper covering the model, the animation rig, the operator interface and the TCP link, with a feasibility pilot of 20 professional caregivers.</p></div></li>
+    <li><span class="tl-stamp">Sep 2024</span><div class="tl-body"><h3>Empathy and social presence measured at ACM IVA</h3><p>Sixteen nursing participants met an unaware agent, then an aware one, with psychometric instruments either side.</p></div></li>
+    <li><span class="tl-stamp">Oct 2024</span><div class="tl-body"><h3>Usability and acceptance measured at IEEE ISMAR</h3><p>The same cohort rated the system 78.4 on the System Usability Scale and 89.1% on perceived ease of use; every participant completed every task.</p></div></li>
+    <li><span class="tl-stamp">2024</span><div class="tl-body"><h3>The interview data modelled as networks at ICQE</h3><p>Epistemic Network Analysis on the ten interviews found the empathy gap that the next round of scenarios was designed to close.</p></div></li>
+    <li><span class="tl-stamp">2026</span><div class="tl-body"><h3>Discourse inside the simulation analysed at ICQE</h3><p>3,710 transcript lines through ENA, Ordered Network Analysis and CORDTRA, comparing the aware and unaware conditions directly.</p></div></li>
+    <li><span class="tl-stamp">Oct 2026</span><div class="tl-body"><h3>SimPathy at BehavXR, IEEE ISMAR</h3><p>Simulation design and evaluation of an aware embodied patient for caregivers&rsquo; soft-skills training, to be presented in Bari.</p></div></li>
+  </ol>
+</div></section>
+<section class="p-sec"><div class="wrap">
+  <h2>What the studies established together</h2>
+  <p class="sub">Four independent lines of evidence, none of which depends on the others.</p>
+  <ul class="finds two">
+    <li><span class="lab">Usable</span><p class="big">78.4 on the System Usability Scale</p><p>Against an established average of 68 (one-sample Wilcoxon signed-rank, p&nbsp;&lt;&nbsp;0.006). Three quarters of participants placed it above average, and all sixteen completed the tasks.</p></li>
+    <li><span class="lab">Accepted</span><p class="big">89.1% on perceived ease of use</p><p>28.5 of a possible 32 on the Technology Acceptance Model. Every participant complied when the virtual human asked them to switch off a lamp and to play a game.</p></li>
+    <li><span class="lab">It changes behaviour</span><p class="big">More person-centred care when she notices you</p><p>With an aware patient, caregiving competencies clustered around Person-Centered Care and Patient Vulnerability Disclosure rather than professional protocol. Cohen&rsquo;s <i>d</i>&nbsp;=&nbsp;2.12.</p></li>
+    <li><span class="lab">It changes engagement</span><p class="big">More interactions, more strategic reasoning</p><p>Participants triggered more exchanges per minute in the aware condition, and moved from trial-and-error questioning to strategic questioning that got confirmed.</p></li>
+    <li><span class="lab">It closes a real gap</span><p class="big">Training under-weights empathy</p><p>The interview networks showed communication running on empathy in real caregiving and on critical thinking in formal training. That is the finding that shaped the scenarios.</p></li>
+    <li><span class="lab">People preferred it</span><p class="big">Better than the mannequins, in their words</p><p>Two nursing students rated the interaction above their mannequin simulation classes; the asks were for mobility, a wider response range, and no speech overlap.</p></li>
+  </ul>
+</div></section>
+<section class="p-sec p-sec-alt" id="papers"><div class="wrap">
+  <h2>The papers</h2>
+  <ul class="pcards">
+    <li class="pcard"><a href="../papers/icqe-2025-caregiver-competencies.html"><span class="yr">2025</span><span class="vn">ICQE &middot; Springer</span><h3>A Quantitative Ethnographic Analysis of Caregiver Competencies and Engagement in Augmented Reality Geriatric Simulation</h3><p>Three analyses of 3,710 transcript lines: awareness made care more person-centred, reasoning more strategic, engagement higher.</p><span class="go">Read the summary &rarr;</span></a></li>
+    <li class="pcard"><a href="../papers/ismar-2024-usability-acceptance.html"><span class="yr">2024</span><span class="vn">IEEE ISMAR</span><h3>System Usability and Technology Acceptance of a Geriatric Embodied Virtual Human Simulation in Augmented Reality</h3><p>Sixteen caregivers rated the simulation 78.4 on the System Usability Scale against a benchmark of 68, and 89.1% on perceived ease of use.</p><span class="go">Read the summary &rarr;</span></a></li>
+    <li class="pcard"><a href="../papers/iva-2024-social-presence-empathy.html"><span class="yr">2024</span><span class="vn">ACM IVA</span><h3>Aware Intelligent Virtual Agent&rsquo;s Effect on Social Presence and Empathy of Caregivers</h3><p>Empathy and sense of social presence both rose after caregivers met the unaware and then the aware agent.</p><span class="go">Read the summary &rarr;</span></a></li>
+    <li class="pcard"><a href="../papers/vrw-2024-aware-virtual-human.html"><span class="yr">2024</span><span class="vn">IEEE VRW</span><h3>Simulation of an Aware Geriatric Virtual Human in Mixed Reality</h3><p>The demo paper: how the virtual human is modelled, animated and driven by a hidden operator over a TCP link.</p><span class="go">Read the summary &rarr;</span></a></li>
+    <li class="pcard"><a href="../papers/icqe-2024-epistemic-network-analysis.html"><span class="yr">2024</span><span class="vn">ICQE &middot; Springer</span><h3>Analyzing Nursing Assistant Attitudes Towards Geriatric Caregiving Using Epistemic Network Analysis</h3><p>Ten interviews mapped as networks: on the job, communication runs on empathy; in training, it runs on critical thinking.</p><span class="go">Read the summary &rarr;</span></a></li>
+  </ul><p class="sub" style="margin-top:18px">Two further outputs have no summary page yet: <strong>SimPathy</strong> (BehavXR at IEEE ISMAR 2026, accepted, to be presented in October) and a 2023 ICQE conference-proceedings supplement abstract. Both are listed on the <a href="../publications.html">publications page</a>.</p>
+</div></section>
+<section class="p-sec"><div class="wrap">
+  <h2>The simulation, in pictures</h2>
+  <ul class="figs two">
+    <figure><img src="../assets/papers/ismar-2024/setup.jpg" alt="Study room with the operator station behind a divider, the virtual human by the bed, and a participant interacting" loading="lazy" decoding="async"><figcaption>The full room: the operator hidden behind the divider on the left, the virtual human by the bed, a participant interacting on the right.</figcaption></figure>
+    <figure><img src="../assets/papers/ismar-2024/model.jpg" alt="Front, side and gesture views of the 3D model of an older woman" loading="lazy" decoding="async"><figcaption>The character: body gestures on the left, front and side views on the right.</figcaption></figure>
+    <figure><img src="../assets/papers/ismar-2024/gui.jpg" alt="The operator's response button panels" loading="lazy" decoding="async"><figcaption>The operator&rsquo;s interface. Categories along the top, quick responses bottom-left, the chosen category&rsquo;s replies on the right.</figcaption></figure>
+    <figure><img src="../assets/papers/ismar-2024/pov.jpg" alt="The user's point of view of the virtual human, and the virtual human pointing at a lamp" loading="lazy" decoding="async"><figcaption>What the caregiver sees, and the moment she points at the lamp and asks for it to be switched off.</figcaption></figure>
+  </ul>
+</div></section>
+<section class="p-sec"><div class="wrap">
+  <h2>Funding</h2>
+  <div class="takeaway"><h2>Supported by the National Science Foundation</h2><p>This work is supported by the U.S. National Science Foundation under the <strong>Future of Work at the Human-Technology Frontier (FW-HTF)</strong> program, awards <strong>#2222661</strong>, <strong>#2222662</strong> and <strong>#2222663</strong>, a collaboration between the New Jersey Institute of Technology, the University of Central Florida and the University of Delaware.</p><p>Open-access copies of the NSF-funded papers are deposited in the <a href="https://par.nsf.gov/">NSF Public Access Repository</a> and linked from each paper page.</p></div>
+</div></section>
+<div class="wrap"><nav class="pnav"><a href="../research.html">All projects</a><a href="aware-virtual-humans-in-mixed-reality.html">Aware Intelligent Virtual Humans in Mixed Reality &rarr;</a></nav></div>
+</main>
+
+<footer class="wrap foot">
+  <span>&copy; <span id="yr">2026</span> Asif Ahmmed Joy</span>
+  <span class="right">
+    <span id="visit-count" hidden></span>
+    <span>Last updated <time datetime="2026-09-03">3 September 2026</time></span>
+  </span>
+</footer>
+
+<script src="../assets/main.js?v=3"></script>
+</body>
+</html>

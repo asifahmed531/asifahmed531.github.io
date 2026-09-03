@@ -55,7 +55,8 @@
     <li><a class="" href="https://www.researchgate.net/profile/Asif-Ahmmed-Joy" rel="noopener">ResearchGate</a></li>
     <li><a class="back" href="../publications.html">All publications</a></li>
   </ul>
-  <p class="thesis">Ordinary PCA on a hyperspectral image throws away class structure and <em>hurts</em> accuracy. Run PCA separately inside each class, take sixteen components from each, and stack them back together &mdash; accuracy jumps from 89.02% to 95.44%.</p>
+  <p class="thesis">Ordinary PCA on a hyperspectral image throws away class structure and <em>hurts</em> accuracy. Run PCA separately inside each class, take sixteen components from each, and stack them back together, and accuracy jumps from 89.02% to 95.44%.</p>
+  <p class="partof">Part of the project <a href="../projects/hyperspectral-dimensionality-reduction.html">Dimensionality Reduction for Hyperspectral Imaging</a></p>
 </div></header>
 <section class="p-sec"><div class="wrap">
   <h2>At a glance</h2>
@@ -98,7 +99,7 @@
   <h2>Reading the errors</h2>
   <p class="sub">Two observations the paper draws from the ROC curves and the misclassification maps.</p>
   <ul class="finds two">
-    <li><span class="lab">Training data helps</span><p class="big">The two best-separated classes are the two largest</p><p>Corn-notill has the highest area under the curve at 0.78 and Soybean-mintill the second highest &mdash; and they hold 714 and 1,227 training pixels respectively, the two biggest training sets in the study.</p></li>
+    <li><span class="lab">Training data helps</span><p class="big">The two best-separated classes are the two largest</p><p>Corn-notill has the highest area under the curve at 0.78 and Soybean-mintill the second highest, and they hold 714 and 1,227 training pixels respectively, the two biggest training sets in the study.</p></li>
     <li><span class="lab">Two perfect classes</span><p class="big">100% accuracy, one per method</p><p>Hay-windrowed has no misclassified pixels under the plain SVM; Corn-notill has none under class-wise PCA.</p></li>
   </ul>
 </div></section>
@@ -111,7 +112,7 @@
 </div></section>
 <section class="p-sec"><div class="wrap">
   <h2>Takeaway</h2>
-  <div class="takeaway"><h2>Takeaway</h2><p>Dimensionality reduction is not automatically a win: plain PCA on this scene dropped accuracy by more than three points below simply keeping all 220 bands.</p><p>Preserving class structure through the reduction is what turns it into a win &mdash; a 6.4-point gain over the full-band baseline, from 16 features per class instead of 220 bands.</p></div>
+  <div class="takeaway"><h2>Takeaway</h2><p>Dimensionality reduction is not automatically a win: plain PCA on this scene dropped accuracy by more than three points below simply keeping all 220 bands.</p><p>Preserving class structure through the reduction is what turns it into a win: a 6.4-point gain over the full-band baseline, from 16 features per class instead of 220 bands.</p></div>
 </div></section>
 <div class="wrap"><nav class="pnav"><a href="icqe-2024-epistemic-network-analysis.html">&larr; Epistemic network analysis (ICQE 2024)</a><a href="../publications.html">All publications</a><a href="ic4me2-2019-hybrid-selection-extraction.html">Hybrid mRMR + PCA (IC4ME2 2019) &rarr;</a></nav></div>
 </main>

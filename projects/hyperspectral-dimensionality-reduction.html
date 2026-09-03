@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dimensionality Reduction for Hyperspectral Image Classification &mdash; Asif Ahmmed Joy</title>
+<meta name="description" content="Undergraduate thesis research on the Indian Pines scene: PCA, LDA, mRMR and class-wise PCA with SVM classifiers, across three IEEE and ACM papers.">
+<meta name="author" content="Asif Ahmmed Joy">
+<link rel="canonical" href="https://asifahmmedjoy.github.io/projects/hyperspectral-dimensionality-reduction.html">
+<meta name="color-scheme" content="light">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Dimensionality Reduction for Hyperspectral Image Classification &mdash; Asif Ahmmed Joy">
+<meta property="og:description" content="Undergraduate thesis research on the Indian Pines scene: PCA, LDA, mRMR and class-wise PCA with SVM classifiers, across three IEEE and ACM papers.">
+<meta property="og:url" content="https://asifahmmedjoy.github.io/projects/hyperspectral-dimensionality-reduction.html">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%239d2235'/><text y='.9em' x='50%25' text-anchor='middle' font-size='62' font-family='Georgia,serif' fill='white'>A</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css?v=4">
+<link rel="stylesheet" href="../assets/paper.css?v=1">
+<!-- Analytics: GoatCounter (privacy-friendly, no cookies) -->
+<script>window.GOATCOUNTER_CODE = "asifahmmedjoy";</script>
+<script data-goatcounter="https://asifahmmedjoy.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</head>
+<body class="viz-root">
+<a class="skip" href="#main">Skip to content</a>
+
+<nav class="nav">
+  <div class="nav-in">
+    <a class="nav-brand" href="../index.html">Asif Ahmmed Joy</a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="navlinks">Menu</button>
+    <ul class="nav-links" id="navlinks">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../about.html">About</a></li>
+      <li><a href="../files/Asif_Ahmmed_Joy_CV.pdf">CV</a></li>
+      <li><a href="../news.html">News</a></li>
+      <li><a href="../research.html" aria-current="page">Research</a></li>
+      <li><a href="../publications.html">Publications</a></li>
+      <li><a href="../teaching.html">Teaching</a></li>
+      <li><a href="../contact.html">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="main">
+<header class="paper-head"><div class="wrap">
+  <p class="crumb"><a href="../research.html">Research</a> &middot; Undergraduate thesis &middot; RUET &middot; 2018&ndash;2020</p>
+  <h1>Dimensionality Reduction for Hyperspectral Image Classification</h1>
+  <p class="paper-authors">Rajshahi University of Engineering &amp; Technology, Bangladesh &middot; with Dr. Md. Al Mehedi Hasan</p>
+  <p class="paper-venue">Three peer-reviewed IEEE and ACM conference papers on the Indian Pines scene.</p>
+  <ul class="paper-links">
+    <li><a class="" href="https://github.com/joybi531/multiclass_SVM_classification_using_PCA_LDA/" rel="noopener">Code on GitHub</a></li>
+    <li><a class="back" href="../research.html">All projects</a></li>
+    <li><a class="back" href="../publications.html">Publications</a></li>
+  </ul>
+  <p class="thesis">The Indian Pines scene carries 220 spectral bands and nowhere near enough labelled pixels to use them, so reducing the bands should help, and na&iuml;ve reduction makes things worse. Three papers work the problem from three angles; the last one beats the full-band baseline by 6.4 points.</p>
+</div></header>
+<section class="p-sec"><div class="wrap">
+  <h2>At a glance</h2>
+  <ul class="stats">
+    <li class="stat hi"><span class="k">Best overall accuracy</span><span class="v">95.44 <span class="u">%</span></span><span class="n">Class-wise PCA with an SVM</span></li>
+    <li class="stat"><span class="k">Full-band baseline</span><span class="v">89.02 <span class="u">%</span></span><span class="n">All 220 bands, no reduction</span></li>
+    <li class="stat"><span class="k">Features kept</span><span class="v">16 <span class="u">per class</span></span><span class="n">Down from 220 spectral bands</span></li>
+    <li class="stat"><span class="k">Papers</span><span class="v">3</span><span class="n">IEEE ECCE, IEEE IC4ME2, ACM ICCA</span></li>
+  </ul>
+</div></section>
+<section class="p-sec p-sec-alt"><div class="wrap">
+  <h2>The problem</h2>
+  <div class="chart-grid two"><div class="chart"><h3>The Hughes phenomenon</h3><p class="cap">Also called the curse of dimensionality.</p><p style="font-size:.93rem;color:var(--text-soft);margin:0">Hundreds of contiguous spectral bands, most of them highly correlated with their neighbours, and far fewer labelled training pixels than bands. The classifier generalises badly and accuracy falls as dimensionality rises, so the bands have to come down, without taking the class structure with them.</p></div><div class="chart"><h3>Indian Pines</h3><p class="cap">Captured by the AVIRIS sensor over north-western Indiana; roughly two thirds agriculture.</p><ul class="specs">
+    <li><span class="v">145&times;145</span><span class="k">Pixels</span></li>
+    <li><span class="v">220</span><span class="k">Spectral bands</span></li>
+    <li><span class="v">0.4&ndash;2.5 &micro;m</span><span class="k">Wavelengths</span></li>
+    <li><span class="v">16 &rarr; 9</span><span class="k">Classes used</span></li>
+  </ul></div></div>
+</div></section>
+<section class="p-sec"><div class="wrap">
+  <h2>Three attempts on the same problem</h2>
+  <p class="sub">Each paper takes the previous one&rsquo;s weakness as its starting point.</p>
+  <ol class="tl">
+    <li><span class="tl-stamp">Feb 2019 &middot; ECCE</span><div class="tl-body"><h3>Does supervision help?</h3><p>PCA (unsupervised, 21 components) against LDA (supervised, capped at eight features) against both concatenated. LDA generalised best to the held-out test set, at 86.43% from a 96.4% cut in dimensionality, and concatenating the two was the worst of the three.</p></div></li>
+    <li><span class="tl-stamp">Jul 2019 &middot; IC4ME2</span><div class="tl-body"><h3>Does chaining help?</h3><p>Feature extraction into feature selection: PCA first, then mRMR on what PCA produced. The hybrid took the best overall accuracy at 87.72%, from 21 features against mRMR&rsquo;s 160.</p></div></li>
+    <li><span class="tl-stamp">Jan 2020 &middot; ICCA</span><div class="tl-body"><h3>What if the scene is not one pool?</h3><p>Split the pixels by class, run PCA <em>inside</em> each class, take sixteen components from each and stack them back together. Overall accuracy 95.44%, which is 6.4 points above using all 220 bands, and nearly ten above plain PCA.</p></div></li>
+  </ol>
+</div></section>
+<section class="p-sec p-sec-alt"><div class="wrap">
+  <h2>Every method, side by side</h2>
+  <p class="sub">Overall accuracy on the same scene and the same nine classes, one-vs-rest SVM with an RBF kernel throughout. The grey bar is the do-nothing baseline: keep all 220 bands.</p>
+  <div class="chart"><h3>Overall accuracy by dimensionality-reduction method</h3><p class="cap">Only class-wise PCA beats keeping every band. Three of the six reductions fall below it: reducing dimensions is not automatically a win.</p><div class="svg-wrap"><svg viewBox="0 0 700 272" role="img" aria-label="Class-wise PCA 95.44%, SVM, all 220 bands 89.02%, PCA &rarr; mRMR 87.72%, mRMR 86.60%, PCA 85.75%, LDA 84.91%, PCA + LDA 82.59%"><line x1="185.0" y1="0" x2="185.0" y2="246" stroke="var(--grid)" stroke-width="1"/><text x="185.0" y="262" text-anchor="middle" font-size="10.5" fill="var(--text-mute)" font-family="Inter,sans-serif">0%</text><line x1="293.8" y1="0" x2="293.8" y2="246" stroke="var(--grid)" stroke-width="1"/><text x="293.8" y="262" text-anchor="middle" font-size="10.5" fill="var(--text-mute)" font-family="Inter,sans-serif">25%</text><line x1="402.5" y1="0" x2="402.5" y2="246" stroke="var(--grid)" stroke-width="1"/><text x="402.5" y="262" text-anchor="middle" font-size="10.5" fill="var(--text-mute)" font-family="Inter,sans-serif">50%</text><line x1="511.2" y1="0" x2="511.2" y2="246" stroke="var(--grid)" stroke-width="1"/><text x="511.2" y="262" text-anchor="middle" font-size="10.5" fill="var(--text-mute)" font-family="Inter,sans-serif">75%</text><line x1="620.0" y1="0" x2="620.0" y2="246" stroke="var(--grid)" stroke-width="1"/><text x="620.0" y="262" text-anchor="middle" font-size="10.5" fill="var(--text-mute)" font-family="Inter,sans-serif">100%</text><text x="173" y="30.4" text-anchor="end" font-size="12.5" fill="var(--text-soft)" font-family="Inter,sans-serif">Class-wise PCA</text><path d="M185 16 h411.2 a4 4 0 0 1 4 4 v12 a4 4 0 0 1 -4 4 h-411.2 z" fill="var(--s3)"><title>Class-wise PCA: 95.44%</title></path><text x="608.2" y="30.8" font-size="12.5" font-weight="700" fill="var(--text)" font-family="Inter,sans-serif">95.44%</text><text x="173" y="64.4" text-anchor="end" font-size="12.5" fill="var(--text-soft)" font-family="Inter,sans-serif">SVM, all 220 bands</text><path d="M185 50 h383.2 a4 4 0 0 1 4 4 v12 a4 4 0 0 1 -4 4 h-383.2 z" fill="var(--border-strong)"><title>SVM, all 220 bands: 89.02%</title></path><text x="580.2" y="64.8" font-size="12.5" font-weight="700" fill="var(--text)" font-family="Inter,sans-serif">89.02%</text><text x="173" y="98.4" text-anchor="end" font-size="12.5" fill="var(--text-soft)" font-family="Inter,sans-serif">PCA &rarr; mRMR</text><path d="M185 84 h377.6 a4 4 0 0 1 4 4 v12 a4 4 0 0 1 -4 4 h-377.6 z" fill="var(--s1)"><title>PCA &rarr; mRMR: 87.72%</title></path><text x="574.6" y="98.8" font-size="12.5" font-weight="700" fill="var(--text)" font-family="Inter,sans-serif">87.72%</text><text x="173" y="132.4" text-anchor="end" font-size="12.5" fill="var(--text-soft)" font-family="Inter,sans-serif">mRMR</text><path d="M185 118 h372.7 a4 4 0 0 1 4 4 v12 a4 4 0 0 1 -4 4 h-372.7 z" fill="var(--s1)"><title>mRMR: 86.60%</title></path><text x="569.7" y="132.8" font-size="12.5" font-weight="700" fill="var(--text)" font-family="Inter,sans-serif">86.60%</text><text x="173" y="166.4" text-anchor="end" font-size="12.5" fill="var(--text-soft)" font-family="Inter,sans-serif">PCA</text><path d="M185 152 h369.0 a4 4 0 0 1 4 4 v12 a4 4 0 0 1 -4 4 h-369.0 z" fill="var(--s1)"><title>PCA: 85.75%</title></path><text x="566.0" y="166.8" font-size="12.5" font-weight="700" fill="var(--text)" font-family="Inter,sans-serif">85.75%</text><text x="173" y="200.4" text-anchor="end" font-size="12.5" fill="var(--text-soft)" font-family="Inter,sans-serif">LDA</text><path d="M185 186 h365.4 a4 4 0 0 1 4 4 v12 a4 4 0 0 1 -4 4 h-365.4 z" fill="var(--s2)"><title>LDA: 84.91%</title></path><text x="562.4" y="200.8" font-size="12.5" font-weight="700" fill="var(--text)" font-family="Inter,sans-serif">84.91%</text><text x="173" y="234.4" text-anchor="end" font-size="12.5" fill="var(--text-soft)" font-family="Inter,sans-serif">PCA + LDA</text><path d="M185 220 h355.3 a4 4 0 0 1 4 4 v12 a4 4 0 0 1 -4 4 h-355.3 z" fill="var(--s2)"><title>PCA + LDA: 82.59%</title></path><text x="552.3" y="234.8" font-size="12.5" font-weight="700" fill="var(--text)" font-family="Inter,sans-serif">82.59%</text><line x1="185" y1="0" x2="185" y2="246" stroke="var(--border-strong)" stroke-width="1"/></svg></div><details class="tv"><summary>Data table</summary><div class="tv-scroll"><table><thead><tr><th>Method</th><th>Features</th><th>Overall accuracy</th><th>Independent test</th><th>Reported in</th></tr></thead><tbody><tr><td>SVM, all bands</td><td>220</td><td>89.02%</td><td>&mdash;</td><td>ICCA 2020</td></tr><tr><td>PCA</td><td>21</td><td>85.75%</td><td>83.98%</td><td>ECCE / IC4ME2 / ICCA</td></tr><tr><td>LDA</td><td>8</td><td>84.91%</td><td>86.43%</td><td>ECCE 2019</td></tr><tr><td>PCA + LDA</td><td>29</td><td>82.59%</td><td>82.65%</td><td>ECCE 2019</td></tr><tr><td>mRMR</td><td>160</td><td>86.60%</td><td>83.11%</td><td>IC4ME2 2019</td></tr><tr><td>PCA &rarr; mRMR</td><td>21</td><td>87.72%</td><td>84.08%</td><td>IC4ME2 2019</td></tr><tr><td>Class-wise PCA</td><td>16 per class</td><td>95.44%</td><td>&mdash;</td><td>ICCA 2020</td></tr></tbody></table></div></details></div><p class="sub" style="margin-top:16px">Train and test splits differ slightly between the IC4ME2 paper and the other two, so the independent-test column is best compared within a paper rather than across all three. Plain PCA returns 85.75% in all three, which is a useful consistency check.</p>
+</div></section>
+<section class="p-sec"><div class="wrap">
+  <h2>What the three papers add up to</h2>
+  <ul class="finds two">
+    <li><span class="lab">The counter-intuitive result</span><p class="big">Reduction can cost you accuracy</p><p>Plain PCA on 21 components scored more than three points <em>below</em> simply keeping all 220 bands. Variance is not the same thing as class separability.</p></li>
+    <li><span class="lab">What fixed it</span><p class="big">Preserve class structure through the reduction</p><p>Running PCA per class keeps the within-class variance that a scene-wide projection averages away, and turns the same idea into a 6.4-point gain.</p></li>
+    <li><span class="lab">Supervision earns its keep</span><p class="big">Eight features, best generalisation</p><p>LDA, which uses the labels, gave the strongest independent-test accuracy from a third as many features as PCA needed, though it loses to PCA on overall accuracy across the full data.</p></li>
+    <li><span class="lab">More data, cleaner classes</span><p class="big">The largest classes separate best</p><p>The two classes with the highest area under the ROC curve were also the two with the most training pixels, at 714 and 1,227.</p></li>
+  </ul>
+</div></section>
+<section class="p-sec p-sec-alt"><div class="wrap">
+  <h2>The papers</h2>
+  <ul class="pcards">
+    <li class="pcard"><a href="../papers/icca-2020-class-wise-pca.html"><span class="yr">2020</span><span class="vn">ACM ICCA</span><h3>An Improved Class-wise Principal Component Analysis Based Feature Extraction Framework for Hyperspectral Image Classification</h3><p>Running PCA inside each class instead of across the scene lifts overall accuracy from 89.02% to 95.44%.</p><span class="go">Read the summary &rarr;</span></a></li>
+    <li class="pcard"><a href="../papers/ic4me2-2019-hybrid-selection-extraction.html"><span class="yr">2019</span><span class="vn">IEEE IC4ME2</span><h3>A Hybrid Approach of Feature Selection and Feature Extraction for Hyperspectral Image Classification</h3><p>Chaining PCA into mRMR reaches 87.72% overall accuracy from 21 of 220 features.</p><span class="go">Read the summary &rarr;</span></a></li>
+    <li class="pcard"><a href="../papers/ecce-2019-supervised-unsupervised.html"><span class="yr">2019</span><span class="vn">IEEE ECCE</span><h3>A Comparison of Supervised and Unsupervised Dimension Reduction Methods for Hyperspectral Image Classification</h3><p>PCA against LDA against both; LDA generalises best to the held-out test set from eight features.</p><span class="go">Read the summary &rarr;</span></a></li>
+  </ul>
+</div></section>
+<section class="p-sec"><div class="wrap">
+  <h2>The dataset and the errors</h2>
+  <ul class="figs two">
+    <figure><img src="../assets/papers/ecce-2019/indian-pines.jpg" alt="The Indian Pines hyperspectral cube as a composite colour image and its ground reference map" loading="lazy" decoding="async"><figcaption>The scene as a spectral cube, and the ground reference with each class labelled.</figcaption></figure>
+    <figure><img src="../assets/papers/ic4me2-2019/classification-maps.jpg" alt="Four classification maps: ground truth, PCA, mRMR and PCA-mRMR" loading="lazy" decoding="async"><figcaption>Classification maps against the ground truth; the speckle is misclassified pixels.</figcaption></figure>
+  </ul>
+</div></section>
+<div class="wrap"><nav class="pnav"><a href="mixed-methods-evaluation.html">&larr; Mixed-Methods Evaluation of Immersive Systems</a><a href="../research.html">All projects</a></nav></div>
+</main>
+
+<footer class="wrap foot">
+  <span>&copy; <span id="yr">2026</span> Asif Ahmmed Joy</span>
+  <span class="right">
+    <span id="visit-count" hidden></span>
+    <span>Last updated <time datetime="2026-09-03">3 September 2026</time></span>
+  </span>
+</footer>
+
+<script src="../assets/main.js?v=3"></script>
+</body>
+</html>
