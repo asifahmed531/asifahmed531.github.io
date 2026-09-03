@@ -220,6 +220,8 @@ ul{margin:0;padding:0}
 .pub-links a:hover{border-color:var(--accent);color:var(--accent);text-decoration:none;background:var(--accent-soft)}
 .pub-links a.pdf{border-color:rgba(18,87,196,.3);color:var(--blue);background:var(--blue-soft)}
 .pub-links a.pdf:hover{border-color:var(--blue);background:#dbe8fb;color:var(--blue)}
+.pub-links a.details{background:var(--accent);border-color:var(--accent);color:#fff}
+.pub-links a.details:hover{background:var(--accent-hover);border-color:var(--accent-hover);color:#fff}
 .badge{
   display:inline-block;font-size:.68rem;font-weight:700;letter-spacing:.045em;text-transform:uppercase;
   padding:2px 7px;border-radius:4px;background:var(--accent-soft);color:var(--accent);margin-left:7px;vertical-align:2px;

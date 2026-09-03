@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A Hybrid Approach of Feature Selection and Feature Extraction for Hyperspectral Image Classification &mdash; Asif Ahmmed Joy</title>
+<meta name="description" content="Visual summary: chaining PCA into mRMR reaches 87.72% overall accuracy on Indian Pines with 21 of 220 features (IEEE IC4ME2 2019).">
+<meta name="author" content="Asif Ahmmed Joy">
+<link rel="canonical" href="https://asifahmmedjoy.github.io/papers/ic4me2-2019-hybrid-selection-extraction.html">
+<meta name="color-scheme" content="light">
+<meta property="og:type" content="article">
+<meta property="og:title" content="A Hybrid Approach of Feature Selection and Feature Extraction for Hyperspectral Image Classification &mdash; Asif Ahmmed Joy">
+<meta property="og:description" content="Visual summary: chaining PCA into mRMR reaches 87.72% overall accuracy on Indian Pines with 21 of 220 features (IEEE IC4ME2 2019).">
+<meta property="og:url" content="https://asifahmmedjoy.github.io/papers/ic4me2-2019-hybrid-selection-extraction.html">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%239d2235'/><text y='.9em' x='50%25' text-anchor='middle' font-size='62' font-family='Georgia,serif' fill='white'>A</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css?v=4">
+<link rel="stylesheet" href="../assets/paper.css?v=1">
+<!-- Analytics: GoatCounter (privacy-friendly, no cookies) -->
+<script>window.GOATCOUNTER_CODE = "asifahmmedjoy";</script>
+<script data-goatcounter="https://asifahmmedjoy.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</head>
+<body class="viz-root">
+<a class="skip" href="#main">Skip to content</a>
+
+<nav class="nav">
+  <div class="nav-in">
+    <a class="nav-brand" href="../index.html">Asif Ahmmed Joy</a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="navlinks">Menu</button>
+    <ul class="nav-links" id="navlinks">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../about.html">About</a></li>
+      <li><a href="../files/Asif_Ahmmed_Joy_CV.pdf">CV</a></li>
+      <li><a href="../news.html">News</a></li>
+      <li><a href="../research.html">Research</a></li>
+      <li><a href="../publications.html" aria-current="page">Publications</a></li>
+      <li><a href="../teaching.html">Teaching</a></li>
+      <li><a href="../contact.html">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="main">
+<header class="paper-head"><div class="wrap">
+  <p class="crumb"><a href="../publications.html">Publications</a> &middot; IEEE IC4ME2 2019</p>
+  <h1>A Hybrid Approach of Feature Selection and Feature Extraction for Hyperspectral Image Classification</h1>
+  <p class="paper-authors"><span class="me">Joy, A. A.</span> &amp; Hasan, M. A. M.</p>
+  <p class="paper-venue">International Conference on Computer, Communication, Chemical, Materials and Electronic Engineering (IC4ME2) 2019, 11&ndash;12 July 2019. IEEE, pp. 1&ndash;4.</p>
+  <ul class="paper-links">
+    <li><a class="" href="https://doi.org/10.1109/IC4ME247184.2019.9036617" rel="noopener">DOI</a></li>
+    <li><a class="" href="https://www.researchgate.net/profile/Asif-Ahmmed-Joy" rel="noopener">ResearchGate</a></li>
+    <li><a class="back" href="../publications.html">All publications</a></li>
+  </ul>
+  <p class="thesis">Feature <em>extraction</em> combines bands; feature <em>selection</em> discards them. This paper chains the two &mdash; PCA first, then mRMR on what PCA produced &mdash; and gets the best overall accuracy of the three, from just 21 features out of 220.</p>
+</div></header>
+<section class="p-sec"><div class="wrap">
+  <h2>At a glance</h2>
+  <ul class="stats">
+    <li class="stat hi"><span class="k">PCA &rarr; mRMR hybrid</span><span class="v">87.72 <span class="u">%</span></span><span class="n">Overall accuracy, 21 features</span></li>
+    <li class="stat"><span class="k">mRMR alone</span><span class="v">86.60 <span class="u">%</span></span><span class="n">Best at 160 selected features</span></li>
+    <li class="stat"><span class="k">PCA alone</span><span class="v">85.75 <span class="u">%</span></span><span class="n">21 components, ~99% of variance</span></li>
+    <li class="stat"><span class="k">Dimensionality cut</span><span class="v">220 &rarr; 21</span><span class="n">90.5% fewer features</span></li>
+  </ul>
+</div></section>
+<section class="p-sec p-sec-alt"><div class="wrap">
+  <h2>Two ways to shrink a hyperspectral image</h2>
+  <ul class="compare">
+    <li class="a"><h3><span class="dot"></span>PCA &mdash; extraction</h3><p class="lead">Unsupervised; builds new features</p>
+    <ul>
+      <li>Projects the 220 bands onto a low-dimensional basis that keeps maximal variance</li>
+      <li>Here 21 components carry almost 99% of the variance</li>
+      <li>Weakness: nothing guarantees the new features separate the classes well</li>
+    </ul></li>
+    <li class="b"><h3><span class="dot"></span>mRMR &mdash; selection</h3><p class="lead">Ranks and keeps original bands</p>
+    <ul>
+      <li>Minimum Redundancy Maximum Relevance: maximise mutual information with the label, minimise it between features</li>
+      <li>Returns a ranked list; accuracy is then checked for the first <i>N</i></li>
+      <li>Best result here came at 160 features</li>
+    </ul></li>
+  </ul><div style="margin-top:18px"><ul class="flow c3">
+    <li><h3>PCA on all 220 bands</h3><p>Extract components and keep the 21 that cover ~99% of the variance.</p></li>
+    <li><h3>mRMR on those 21</h3><p>Re-rank the components by mutual information, then test each prefix of the ranking.</p></li>
+    <li><h3>Classify with SVM</h3><p>One-vs-rest SVM with an RBF kernel. The full set of 21 turned out to be the best subset.</p></li>
+  </ul></div>
+</div></section>
+<section class="p-sec"><div class="wrap">
+  <h2>Results</h2>
+  <p class="sub">The data was split 80/20; within the 80%, half became the training set and the remaining 30% a cross-validation set used for model selection.</p>
+  <div class="chart"><h3>Overall accuracy and independent-test accuracy</h3><p class="cap">Overall accuracy is measured across the nine classes; ITA is the held-out independent test set. The hybrid leads on both, from a seventh as many features as mRMR needs. The axis starts at 82%, not zero.</p><ul class="legend">
+    <li><span class="sw" style="background:#2a78d6"></span>Overall accuracy</li>
+    <li><span class="sw" style="background:#eb6834"></span>Independent test accuracy</li>
+  </ul><div class="svg-wrap"><svg viewBox="0 0 660 136" role="img" aria-label="Dot plot comparison"><line x1="180.0" y1="2" x2="180.0" y2="110" stroke="var(--grid)" stroke-width="1"/><text x="180.0" y="127" text-anchor="middle" font-size="10.5" fill="var(--text-mute)" font-family="Inter,sans-serif">82%</text><line x1="301.7" y1="2" x2="301.7" y2="110" stroke="var(--grid)" stroke-width="1"/><text x="301.7" y="127" text-anchor="middle" font-size="10.5" fill="var(--text-mute)" font-family="Inter,sans-serif">84%</text><line x1="423.4" y1="2" x2="423.4" y2="110" stroke="var(--grid)" stroke-width="1"/><text x="423.4" y="127" text-anchor="middle" font-size="10.5" fill="var(--text-mute)" font-family="Inter,sans-serif">86%</text><line x1="545.1" y1="2" x2="545.1" y2="110" stroke="var(--grid)" stroke-width="1"/><text x="545.1" y="127" text-anchor="middle" font-size="10.5" fill="var(--text-mute)" font-family="Inter,sans-serif">88%</text><text x="168" y="24" text-anchor="end" font-size="12" fill="var(--text-soft)" font-family="Inter,sans-serif">PCA (21 features)</text><line x1="300.5" y1="20" x2="408.2" y2="20" stroke="var(--border-strong)" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/><circle cx="408.2" cy="20.0" r="5" fill="var(--s1)" stroke="#fff" stroke-width="2"><title>PCA (21 features) &middot; Overall accuracy: 85.75%</title></circle><circle cx="300.5" cy="20.0" r="5" fill="var(--s2)" stroke="#fff" stroke-width="2"><title>PCA (21 features) &middot; Independent test accuracy: 83.98%</title></circle><text x="168" y="58" text-anchor="end" font-size="12" fill="var(--text-soft)" font-family="Inter,sans-serif">mRMR (160 features)</text><line x1="247.6" y1="54" x2="459.9" y2="54" stroke="var(--border-strong)" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/><circle cx="459.9" cy="54.0" r="5" fill="var(--s1)" stroke="#fff" stroke-width="2"><title>mRMR (160 features) &middot; Overall accuracy: 86.6%</title></circle><circle cx="247.6" cy="54.0" r="5" fill="var(--s2)" stroke="#fff" stroke-width="2"><title>mRMR (160 features) &middot; Independent test accuracy: 83.11%</title></circle><text x="168" y="92" text-anchor="end" font-size="12" fill="var(--text-soft)" font-family="Inter,sans-serif">PCA → mRMR (21)</text><line x1="306.6" y1="88" x2="528.1" y2="88" stroke="var(--border-strong)" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/><circle cx="528.1" cy="88.0" r="5" fill="var(--s1)" stroke="#fff" stroke-width="2"><title>PCA → mRMR (21) &middot; Overall accuracy: 87.72%</title></circle><circle cx="306.6" cy="88.0" r="5" fill="var(--s2)" stroke="#fff" stroke-width="2"><title>PCA → mRMR (21) &middot; Independent test accuracy: 84.08%</title></circle><line x1="180" y1="2" x2="180" y2="110" stroke="var(--border-strong)" stroke-width="1"/></svg></div><details class="tv"><summary>Data table</summary><div class="tv-scroll"><table><thead><tr><th>Method</th><th>Features</th><th>Overall accuracy</th><th>Independent test accuracy</th></tr></thead><tbody><tr><td>PCA</td><td>21</td><td>85.75%</td><td>83.98%</td></tr><tr><td>mRMR</td><td>160</td><td>86.60%</td><td>83.11%</td></tr><tr><td>PCA &rarr; mRMR</td><td>21</td><td>87.72%</td><td>84.08%</td></tr></tbody></table></div></details></div><div style="margin-top:14px"><div class="chart"><h3>Per-class accuracy</h3><p class="cap">mRMR reaches 100% on Grass-trees and Hay-windrowed; the hybrid is strongest on Corn-notill and Woods. The axis starts at 60%, not zero.</p><ul class="legend">
+    <li><span class="sw" style="background:#2a78d6"></span>PCA</li>
+    <li><span class="sw" style="background:#eb6834"></span>mRMR</li>
+    <li><span class="sw" style="background:#1baf7a"></span>PCA &rarr; mRMR</li>
+  </ul><div class="svg-wrap"><svg viewBox="0 0 700 340" role="img" aria-label="Dot plot comparison"><line x1="140.0" y1="2" x2="140.0" y2="314" stroke="var(--grid)" stroke-width="1"/><text x="140.0" y="331" text-anchor="middle" font-size="10.5" fill="var(--text-mute)" font-family="Inter,sans-serif">60%</text><line x1="266.5" y1="2" x2="266.5" y2="314" stroke="var(--grid)" stroke-width="1"/><text x="266.5" y="331" text-anchor="middle" font-size="10.5" fill="var(--text-mute)" font-family="Inter,sans-serif">70%</text><line x1="393.0" y1="2" x2="393.0" y2="314" stroke="var(--grid)" stroke-width="1"/><text x="393.0" y="331" text-anchor="middle" font-size="10.5" fill="var(--text-mute)" font-family="Inter,sans-serif">80%</text><line x1="519.5" y1="2" x2="519.5" y2="314" stroke="var(--grid)" stroke-width="1"/><text x="519.5" y="331" text-anchor="middle" font-size="10.5" fill="var(--text-mute)" font-family="Inter,sans-serif">90%</text><line x1="646.0" y1="2" x2="646.0" y2="314" stroke="var(--grid)" stroke-width="1"/><text x="646.0" y="331" text-anchor="middle" font-size="10.5" fill="var(--text-mute)" font-family="Inter,sans-serif">100%</text><text x="128" y="24" text-anchor="end" font-size="12" fill="var(--text-soft)" font-family="Inter,sans-serif">Corn-notill</text><line x1="340.8" y1="20" x2="403.6" y2="20" stroke="var(--border-strong)" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/><circle cx="340.8" cy="20.0" r="5" fill="var(--s1)" stroke="#fff" stroke-width="2"><title>Corn-notill &middot; PCA: 75.87%</title></circle><circle cx="371.1" cy="20.0" r="5" fill="var(--s2)" stroke="#fff" stroke-width="2"><title>Corn-notill &middot; mRMR: 78.27%</title></circle><circle cx="403.6" cy="20.0" r="5" fill="var(--s3)" stroke="#fff" stroke-width="2"><title>Corn-notill &middot; PCA → mRMR: 80.84%</title></circle><text x="128" y="58" text-anchor="end" font-size="12" fill="var(--text-soft)" font-family="Inter,sans-serif">Corn-mintill</text><line x1="242.1" y1="54" x2="310.6" y2="54" stroke="var(--border-strong)" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/><circle cx="242.1" cy="54.0" r="5" fill="var(--s1)" stroke="#fff" stroke-width="2"><title>Corn-mintill &middot; PCA: 68.07%</title></circle><circle cx="310.6" cy="49.5" r="5" fill="var(--s2)" stroke="#fff" stroke-width="2"><title>Corn-mintill &middot; mRMR: 73.49%</title></circle><circle cx="310.6" cy="58.5" r="5" fill="var(--s3)" stroke="#fff" stroke-width="2"><title>Corn-mintill &middot; PCA → mRMR: 73.49%</title></circle><text x="128" y="92" text-anchor="end" font-size="12" fill="var(--text-soft)" font-family="Inter,sans-serif">Grass-pasture</text><line x1="497.6" y1="88" x2="593.6" y2="88" stroke="var(--border-strong)" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/><circle cx="567.7" cy="88.0" r="5" fill="var(--s1)" stroke="#fff" stroke-width="2"><title>Grass-pasture &middot; PCA: 93.81%</title></circle><circle cx="593.6" cy="88.0" r="5" fill="var(--s2)" stroke="#fff" stroke-width="2"><title>Grass-pasture &middot; mRMR: 95.86%</title></circle><circle cx="497.6" cy="88.0" r="5" fill="var(--s3)" stroke="#fff" stroke-width="2"><title>Grass-pasture &middot; PCA → mRMR: 88.27%</title></circle><text x="128" y="126" text-anchor="end" font-size="12" fill="var(--text-soft)" font-family="Inter,sans-serif">Grass-trees</text><line x1="628.7" y1="122" x2="646.0" y2="122" stroke="var(--border-strong)" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/><circle cx="628.7" cy="117.5" r="5" fill="var(--s1)" stroke="#fff" stroke-width="2"><title>Grass-trees &middot; PCA: 98.63%</title></circle><circle cx="646.0" cy="122.0" r="5" fill="var(--s2)" stroke="#fff" stroke-width="2"><title>Grass-trees &middot; mRMR: 100.0%</title></circle><circle cx="628.7" cy="126.5" r="5" fill="var(--s3)" stroke="#fff" stroke-width="2"><title>Grass-trees &middot; PCA → mRMR: 98.63%</title></circle><text x="128" y="160" text-anchor="end" font-size="12" fill="var(--text-soft)" font-family="Inter,sans-serif">Hay-windrowed</text><line x1="632.7" y1="156" x2="646.0" y2="156" stroke="var(--border-strong)" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/><circle cx="632.7" cy="156.0" r="5" fill="var(--s1)" stroke="#fff" stroke-width="2"><title>Hay-windrowed &middot; PCA: 98.95%</title></circle><circle cx="646.0" cy="151.5" r="5" fill="var(--s2)" stroke="#fff" stroke-width="2"><title>Hay-windrowed &middot; mRMR: 100.0%</title></circle><circle cx="646.0" cy="160.5" r="5" fill="var(--s3)" stroke="#fff" stroke-width="2"><title>Hay-windrowed &middot; PCA → mRMR: 100.0%</title></circle><text x="128" y="194" text-anchor="end" font-size="12" fill="var(--text-soft)" font-family="Inter,sans-serif">Soybean-notill</text><line x1="354.0" y1="190" x2="406.8" y2="190" stroke="var(--border-strong)" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/><circle cx="354.0" cy="190.0" r="5" fill="var(--s1)" stroke="#fff" stroke-width="2"><title>Soybean-notill &middot; PCA: 76.92%</title></circle><circle cx="406.8" cy="190.0" r="5" fill="var(--s2)" stroke="#fff" stroke-width="2"><title>Soybean-notill &middot; mRMR: 81.09%</title></circle><circle cx="376.4" cy="190.0" r="5" fill="var(--s3)" stroke="#fff" stroke-width="2"><title>Soybean-notill &middot; PCA → mRMR: 78.69%</title></circle><text x="128" y="228" text-anchor="end" font-size="12" fill="var(--text-soft)" font-family="Inter,sans-serif">Soybean-mintill</text><line x1="451.7" y1="224" x2="453.5" y2="224" stroke="var(--border-strong)" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/><circle cx="452.7" cy="224.0" r="5" fill="var(--s1)" stroke="#fff" stroke-width="2"><title>Soybean-mintill &middot; PCA: 84.72%</title></circle><circle cx="453.5" cy="233.0" r="5" fill="var(--s2)" stroke="#fff" stroke-width="2"><title>Soybean-mintill &middot; mRMR: 84.78%</title></circle><circle cx="451.7" cy="215.0" r="5" fill="var(--s3)" stroke="#fff" stroke-width="2"><title>Soybean-mintill &middot; PCA → mRMR: 84.64%</title></circle><text x="128" y="262" text-anchor="end" font-size="12" fill="var(--text-soft)" font-family="Inter,sans-serif">Soybean-clean</text><line x1="305.7" y1="258" x2="475.4" y2="258" stroke="var(--border-strong)" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/><circle cx="305.7" cy="258.0" r="5" fill="var(--s1)" stroke="#fff" stroke-width="2"><title>Soybean-clean &middot; PCA: 73.1%</title></circle><circle cx="475.4" cy="258.0" r="5" fill="var(--s2)" stroke="#fff" stroke-width="2"><title>Soybean-clean &middot; mRMR: 86.51%</title></circle><circle cx="333.3" cy="258.0" r="5" fill="var(--s3)" stroke="#fff" stroke-width="2"><title>Soybean-clean &middot; PCA → mRMR: 75.28%</title></circle><text x="128" y="296" text-anchor="end" font-size="12" fill="var(--text-soft)" font-family="Inter,sans-serif">Woods</text><line x1="622.6" y1="292" x2="642.6" y2="292" stroke="var(--border-strong)" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/><circle cx="626.0" cy="296.5" r="5" fill="var(--s1)" stroke="#fff" stroke-width="2"><title>Woods &middot; PCA: 98.42%</title></circle><circle cx="622.6" cy="287.5" r="5" fill="var(--s2)" stroke="#fff" stroke-width="2"><title>Woods &middot; mRMR: 98.15%</title></circle><circle cx="642.6" cy="292.0" r="5" fill="var(--s3)" stroke="#fff" stroke-width="2"><title>Woods &middot; PCA → mRMR: 99.73%</title></circle><line x1="140" y1="2" x2="140" y2="314" stroke="var(--border-strong)" stroke-width="1"/></svg></div><details class="tv"><summary>Data table</summary><div class="tv-scroll"><table><thead><tr><th>Class</th><th>Train px</th><th>Test px</th><th>PCA</th><th>mRMR</th><th>PCA &rarr; mRMR</th></tr></thead><tbody><tr><td>Corn-notill</td><td>714</td><td>428</td><td>75.87%</td><td>78.27%</td><td>80.84%</td></tr><tr><td>Corn-mintill</td><td>415</td><td>249</td><td>68.07%</td><td>73.49%</td><td>73.49%</td></tr><tr><td>Grass-pasture</td><td>241</td><td>145</td><td>93.81%</td><td>95.86%</td><td>88.27%</td></tr><tr><td>Grass-trees</td><td>365</td><td>219</td><td>98.63%</td><td>100.00%</td><td>98.63%</td></tr><tr><td>Hay-windrowed</td><td>239</td><td>143</td><td>98.95%</td><td>100.00%</td><td>100.00%</td></tr><tr><td>Soybean-notill</td><td>486</td><td>292</td><td>76.92%</td><td>81.09%</td><td>78.69%</td></tr><tr><td>Soybean-mintill</td><td>1227</td><td>736</td><td>84.72%</td><td>84.78%</td><td>84.64%</td></tr><tr><td>Soybean-clean</td><td>296</td><td>178</td><td>73.10%</td><td>86.51%</td><td>75.28%</td></tr><tr><td>Woods</td><td>632</td><td>379</td><td>98.42%</td><td>98.15%</td><td>99.73%</td></tr><tr><td><b>Overall</b></td><td></td><td></td><td><b>85.75%</b></td><td><b>86.60%</b></td><td><b>87.72%</b></td></tr><tr><td><b>Independent test</b></td><td></td><td></td><td><b>83.98%</b></td><td><b>83.11%</b></td><td><b>84.08%</b></td></tr></tbody></table></div></details></div></div>
+</div></section>
+<section class="p-sec p-sec-alt"><div class="wrap">
+  <h2>Figures from the paper</h2>
+  <ul class="figs two">
+    <figure><img src="../assets/papers/ic4me2-2019/accuracy-curve.jpg" alt="Line chart of classification accuracy against number of features for PCA, mRMR and PCA-mRMR" loading="lazy" decoding="async"><figcaption><b>Figure 2.</b> Classification accuracy as the number of selected features grows, for all three approaches.</figcaption></figure>
+    <figure><img src="../assets/papers/ic4me2-2019/classification-maps.jpg" alt="Four classification maps: ground truth, PCA, mRMR and PCA-mRMR" loading="lazy" decoding="async"><figcaption><b>Figure 3.</b> Classification maps against the ground truth &mdash; the visible speckle is misclassified pixels.</figcaption></figure>
+  </ul>
+</div></section>
+<section class="p-sec"><div class="wrap">
+  <h2>Takeaway</h2>
+  <div class="takeaway"><h2>Takeaway</h2><p>Chaining extraction into selection beats either alone here: the hybrid takes the top overall and independent-test accuracy while carrying 21 features against mRMR&rsquo;s 160.</p><p>The stated goal for future work is the efficiency frontier &mdash; the same accuracy from still fewer features.</p></div>
+</div></section>
+<div class="wrap"><nav class="pnav"><a href="icca-2020-class-wise-pca.html">&larr; Class-wise PCA (ICCA 2020)</a><a href="../publications.html">All publications</a><a href="ecce-2019-supervised-unsupervised.html">PCA vs LDA (ECCE 2019) &rarr;</a></nav></div>
+</main>
+
+<footer class="wrap foot">
+  <span>&copy; <span id="yr">2026</span> Asif Ahmmed Joy</span>
+  <span class="right">
+    <span id="visit-count" hidden></span>
+    <span>Last updated <time datetime="2026-09-03">3 September 2026</time></span>
+  </span>
+</footer>
+
+<script src="../assets/main.js?v=3"></script>
+</body>
+</html>

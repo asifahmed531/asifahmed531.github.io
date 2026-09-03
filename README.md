@@ -1,9 +1,9 @@
-# asifahmed531.github.io
+# asifahmmedjoy.github.io
 
 Personal academic homepage of **Asif Ahmmed Joy** — Ph.D. Candidate, Information Systems,
 New Jersey Institute of Technology.
 
-**Live site:** https://asifahmed531.github.io
+**Live site:** https://asifahmmedjoy.github.io
 
 ## How it is built
 

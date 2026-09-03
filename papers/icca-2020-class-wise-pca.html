@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>An Improved Class-wise PCA Based Feature Extraction Framework for Hyperspectral Image Classification &mdash; Asif Ahmmed Joy</title>
+<meta name="description" content="Visual summary: running PCA within each class of the Indian Pines scene lifts SVM classification accuracy from 89.02% to 95.44% (ACM ICCA 2020).">
+<meta name="author" content="Asif Ahmmed Joy">
+<link rel="canonical" href="https://asifahmmedjoy.github.io/papers/icca-2020-class-wise-pca.html">
+<meta name="color-scheme" content="light">
+<meta property="og:type" content="article">
+<meta property="og:title" content="An Improved Class-wise PCA Based Feature Extraction Framework for Hyperspectral Image Classification &mdash; Asif Ahmmed Joy">
+<meta property="og:description" content="Visual summary: running PCA within each class of the Indian Pines scene lifts SVM classification accuracy from 89.02% to 95.44% (ACM ICCA 2020).">
+<meta property="og:url" content="https://asifahmmedjoy.github.io/papers/icca-2020-class-wise-pca.html">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%239d2235'/><text y='.9em' x='50%25' text-anchor='middle' font-size='62' font-family='Georgia,serif' fill='white'>A</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css?v=4">
+<link rel="stylesheet" href="../assets/paper.css?v=1">
+<!-- Analytics: GoatCounter (privacy-friendly, no cookies) -->
+<script>window.GOATCOUNTER_CODE = "asifahmmedjoy";</script>
+<script data-goatcounter="https://asifahmmedjoy.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</head>
+<body class="viz-root">
+<a class="skip" href="#main">Skip to content</a>
+
+<nav class="nav">
+  <div class="nav-in">
+    <a class="nav-brand" href="../index.html">Asif Ahmmed Joy</a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="navlinks">Menu</button>
+    <ul class="nav-links" id="navlinks">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../about.html">About</a></li>
+      <li><a href="../files/Asif_Ahmmed_Joy_CV.pdf">CV</a></li>
+      <li><a href="../news.html">News</a></li>
+      <li><a href="../research.html">Research</a></li>
+      <li><a href="../publications.html" aria-current="page">Publications</a></li>
+      <li><a href="../teaching.html">Teaching</a></li>
+      <li><a href="../contact.html">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="main">
+<header class="paper-head"><div class="wrap">
+  <p class="crumb"><a href="../publications.html">Publications</a> &middot; ACM ICCA 2020</p>
+  <h1>An Improved Class-wise Principal Component Analysis Based Feature Extraction Framework for Hyperspectral Image Classification</h1>
+  <p class="paper-authors"><span class="me">Joy, A. A.</span> Hasan, M. A. M., &amp; Sayeed, A.</p>
+  <p class="paper-venue">Proceedings of the International Conference on Computing Advancements (ICCA) 2020, Dhaka, 10&ndash;12 January 2020. ACM, Article 48, pp. 1&ndash;6.</p>
+  <ul class="paper-links">
+    <li><a class="" href="https://dl.acm.org/doi/10.1145/3377049.3377081" rel="noopener">ACM DL</a></li>
+    <li><a class="" href="https://doi.org/10.1145/3377049.3377081" rel="noopener">DOI</a></li>
+    <li><a class="" href="https://www.researchgate.net/profile/Asif-Ahmmed-Joy" rel="noopener">ResearchGate</a></li>
+    <li><a class="back" href="../publications.html">All publications</a></li>
+  </ul>
+  <p class="thesis">Ordinary PCA on a hyperspectral image throws away class structure and <em>hurts</em> accuracy. Run PCA separately inside each class, take sixteen components from each, and stack them back together &mdash; accuracy jumps from 89.02% to 95.44%.</p>
+</div></header>
+<section class="p-sec"><div class="wrap">
+  <h2>At a glance</h2>
+  <ul class="stats">
+    <li class="stat hi"><span class="k">Class-wise PCA + SVM</span><span class="v">95.44 <span class="u">%</span></span><span class="n">Overall accuracy &mdash; the proposed method</span></li>
+    <li class="stat"><span class="k">Baseline SVM, all bands</span><span class="v">89.02 <span class="u">%</span></span><span class="n">All 220 spectral bands, no reduction</span></li>
+    <li class="stat"><span class="k">Plain PCA + SVM</span><span class="v">85.75 <span class="u">%</span></span><span class="n">21 components &mdash; worse than doing nothing</span></li>
+    <li class="stat"><span class="k">Features kept</span><span class="v">16 <span class="u">per class</span></span><span class="n">Chosen by maximum average variance</span></li>
+  </ul>
+</div></section>
+<section class="p-sec p-sec-alt"><div class="wrap">
+  <h2>The problem in one sentence</h2>
+  <div class="chart-grid two"><div class="chart"><h3>The Hughes phenomenon</h3><p class="cap">Also called the curse of dimensionality.</p><p style="font-size:.93rem;color:var(--text-soft);margin:0">A hyperspectral image stacks hundreds of contiguous spectral bands. Adjacent bands are highly correlated, so most of that data is redundant &mdash; and with far more bands than training pixels, the classifier generalises poorly and the misclassification rate climbs.</p></div><div class="chart"><h3>The dataset</h3><p class="cap">Indian Pines, captured by the AVIRIS sensor over north-western Indiana.</p><ul class="specs">
+    <li><span class="v">145&times;145</span><span class="k">Pixels</span></li>
+    <li><span class="v">220</span><span class="k">Spectral bands</span></li>
+    <li><span class="v">0.4&ndash;2.5 &micro;m</span><span class="k">Wavelength range</span></li>
+    <li><span class="v">16 &rarr; 9</span><span class="k">Ground-truth classes used</span></li>
+  </ul></div></div>
+</div></section>
+<section class="p-sec"><div class="wrap">
+  <h2>The proposed framework</h2>
+  <p class="sub">Four steps, and the whole idea is in the first one.</p>
+  <ul class="flow c4">
+    <li><h3>Split by class</h3><p>Partition the image&rsquo;s pixels into nine sets, one per ground-truth class, instead of treating the scene as one pool.</p></li>
+    <li><h3>PCA inside each class</h3><p>Run PCA separately on every partition, so the components describe variance <em>within</em> a class rather than across the whole scene.</p></li>
+    <li><h3>Take 16 from each</h3><p>Use the cumulative eigenvalue sum and the maximum average value to pick sixteen components per class.</p></li>
+    <li><h3>Merge, then classify</h3><p>Stack the nine reduced sets vertically &mdash; same pixel count, 16 features &mdash; and classify with a one-vs-rest SVM using an RBF kernel.</p></li>
+  </ul>
+</div></section>
+<section class="p-sec p-sec-alt"><div class="wrap">
+  <h2>Results</h2>
+  <p class="sub">Holdout cross-validation, identical splits for all three approaches: 50% training, 30% validation, 20% test.</p>
+  <div class="chart"><h3>Overall accuracy &mdash; three approaches</h3><p class="cap">One-vs-rest SVM with an RBF kernel throughout; <i>c</i> and &sigma; were grid-searched over 2<sup>&minus;6</sup> to 2<sup>6</sup> for each approach.</p><div class="svg-wrap"><svg viewBox="0 0 660 136" role="img" aria-label="Class-wise PCA + SVM 95.44%, SVM, all 220 bands 89.02%, PCA + SVM 85.75%"><line x1="185.0" y1="0" x2="185.0" y2="110" stroke="var(--grid)" stroke-width="1"/><text x="185.0" y="126" text-anchor="middle" font-size="10.5" fill="var(--text-mute)" font-family="Inter,sans-serif">0%</text><line x1="283.8" y1="0" x2="283.8" y2="110" stroke="var(--grid)" stroke-width="1"/><text x="283.8" y="126" text-anchor="middle" font-size="10.5" fill="var(--text-mute)" font-family="Inter,sans-serif">25%</text><line x1="382.5" y1="0" x2="382.5" y2="110" stroke="var(--grid)" stroke-width="1"/><text x="382.5" y="126" text-anchor="middle" font-size="10.5" fill="var(--text-mute)" font-family="Inter,sans-serif">50%</text><line x1="481.2" y1="0" x2="481.2" y2="110" stroke="var(--grid)" stroke-width="1"/><text x="481.2" y="126" text-anchor="middle" font-size="10.5" fill="var(--text-mute)" font-family="Inter,sans-serif">75%</text><line x1="580.0" y1="0" x2="580.0" y2="110" stroke="var(--grid)" stroke-width="1"/><text x="580.0" y="126" text-anchor="middle" font-size="10.5" fill="var(--text-mute)" font-family="Inter,sans-serif">100%</text><text x="173" y="30.4" text-anchor="end" font-size="12.5" fill="var(--text-soft)" font-family="Inter,sans-serif">Class-wise PCA + SVM</text><path d="M185 16 h373.0 a4 4 0 0 1 4 4 v12 a4 4 0 0 1 -4 4 h-373.0 z" fill="var(--s3)"><title>Class-wise PCA + SVM: 95.44%</title></path><text x="570.0" y="30.8" font-size="12.5" font-weight="700" fill="var(--text)" font-family="Inter,sans-serif">95.44%</text><text x="173" y="64.4" text-anchor="end" font-size="12.5" fill="var(--text-soft)" font-family="Inter,sans-serif">SVM, all 220 bands</text><path d="M185 50 h347.6 a4 4 0 0 1 4 4 v12 a4 4 0 0 1 -4 4 h-347.6 z" fill="var(--s1)"><title>SVM, all 220 bands: 89.02%</title></path><text x="544.6" y="64.8" font-size="12.5" font-weight="700" fill="var(--text)" font-family="Inter,sans-serif">89.02%</text><text x="173" y="98.4" text-anchor="end" font-size="12.5" fill="var(--text-soft)" font-family="Inter,sans-serif">PCA + SVM</text><path d="M185 84 h334.7 a4 4 0 0 1 4 4 v12 a4 4 0 0 1 -4 4 h-334.7 z" fill="var(--s2)"><title>PCA + SVM: 85.75%</title></path><text x="531.7" y="98.8" font-size="12.5" font-weight="700" fill="var(--text)" font-family="Inter,sans-serif">85.75%</text><line x1="185" y1="0" x2="185" y2="110" stroke="var(--border-strong)" stroke-width="1"/></svg></div><details class="tv"><summary>Data table</summary><div class="tv-scroll"><table><thead><tr><th>Approach</th><th>Best <i>c</i> (2^)</th><th>Best &sigma; (2^)</th><th>Overall accuracy</th></tr></thead><tbody><tr><td>SVM, all bands</td><td>5</td><td>4</td><td>89.02%</td></tr><tr><td>PCA + SVM</td><td>1</td><td>2</td><td>85.75%</td></tr><tr><td>Class-wise PCA + SVM</td><td>3</td><td>2</td><td>95.44%</td></tr></tbody></table></div></details></div><div style="margin-top:14px"><div class="chart"><h3>Per-class accuracy across all nine classes</h3><p class="cap">Class-wise PCA lifts the crop classes that the baseline struggled with &mdash; Corn-notill reaches 100% &mdash; while giving some ground on Hay-windrowed and Grass-trees. The axis starts at 60%, not zero.</p><ul class="legend">
+    <li><span class="sw" style="background:#2a78d6"></span>SVM, all 220 bands</li>
+    <li><span class="sw" style="background:#eb6834"></span>PCA + SVM</li>
+    <li><span class="sw" style="background:#1baf7a"></span>Class-wise PCA + SVM</li>
+  </ul><div class="svg-wrap"><svg viewBox="0 0 700 340" role="img" aria-label="Dot plot comparison"><line x1="140.0" y1="2" x2="140.0" y2="314" stroke="var(--grid)" stroke-width="1"/><text x="140.0" y="331" text-anchor="middle" font-size="10.5" fill="var(--text-mute)" font-family="Inter,sans-serif">60%</text><line x1="266.5" y1="2" x2="266.5" y2="314" stroke="var(--grid)" stroke-width="1"/><text x="266.5" y="331" text-anchor="middle" font-size="10.5" fill="var(--text-mute)" font-family="Inter,sans-serif">70%</text><line x1="393.0" y1="2" x2="393.0" y2="314" stroke="var(--grid)" stroke-width="1"/><text x="393.0" y="331" text-anchor="middle" font-size="10.5" fill="var(--text-mute)" font-family="Inter,sans-serif">80%</text><line x1="519.5" y1="2" x2="519.5" y2="314" stroke="var(--grid)" stroke-width="1"/><text x="519.5" y="331" text-anchor="middle" font-size="10.5" fill="var(--text-mute)" font-family="Inter,sans-serif">90%</text><line x1="646.0" y1="2" x2="646.0" y2="314" stroke="var(--grid)" stroke-width="1"/><text x="646.0" y="331" text-anchor="middle" font-size="10.5" fill="var(--text-mute)" font-family="Inter,sans-serif">100%</text><text x="128" y="24" text-anchor="end" font-size="12" fill="var(--text-soft)" font-family="Inter,sans-serif">Corn-notill</text><line x1="340.8" y1="20" x2="646.0" y2="20" stroke="var(--border-strong)" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/><circle cx="432.7" cy="20.0" r="5" fill="var(--s1)" stroke="#fff" stroke-width="2"><title>Corn-notill &middot; SVM, all bands: 83.14%</title></circle><circle cx="340.8" cy="20.0" r="5" fill="var(--s2)" stroke="#fff" stroke-width="2"><title>Corn-notill &middot; PCA + SVM: 75.87%</title></circle><circle cx="646.0" cy="20.0" r="5" fill="var(--s3)" stroke="#fff" stroke-width="2"><title>Corn-notill &middot; Class-wise PCA + SVM: 100.0%</title></circle><text x="128" y="58" text-anchor="end" font-size="12" fill="var(--text-soft)" font-family="Inter,sans-serif">Corn-mintill</text><line x1="242.1" y1="54" x2="541.1" y2="54" stroke="var(--border-strong)" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/><circle cx="344.9" cy="54.0" r="5" fill="var(--s1)" stroke="#fff" stroke-width="2"><title>Corn-mintill &middot; SVM, all bands: 76.2%</title></circle><circle cx="242.1" cy="54.0" r="5" fill="var(--s2)" stroke="#fff" stroke-width="2"><title>Corn-mintill &middot; PCA + SVM: 68.07%</title></circle><circle cx="541.1" cy="54.0" r="5" fill="var(--s3)" stroke="#fff" stroke-width="2"><title>Corn-mintill &middot; Class-wise PCA + SVM: 91.71%</title></circle><text x="128" y="92" text-anchor="end" font-size="12" fill="var(--text-soft)" font-family="Inter,sans-serif">Grass-pasture</text><line x1="540.6" y1="88" x2="569.7" y2="88" stroke="var(--border-strong)" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/><circle cx="540.6" cy="88.0" r="5" fill="var(--s1)" stroke="#fff" stroke-width="2"><title>Grass-pasture &middot; SVM, all bands: 91.67%</title></circle><circle cx="567.7" cy="83.5" r="5" fill="var(--s2)" stroke="#fff" stroke-width="2"><title>Grass-pasture &middot; PCA + SVM: 93.81%</title></circle><circle cx="569.7" cy="92.5" r="5" fill="var(--s3)" stroke="#fff" stroke-width="2"><title>Grass-pasture &middot; Class-wise PCA + SVM: 93.97%</title></circle><text x="128" y="126" text-anchor="end" font-size="12" fill="var(--text-soft)" font-family="Inter,sans-serif">Grass-trees</text><line x1="520.1" y1="122" x2="634.4" y2="122" stroke="var(--border-strong)" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/><circle cx="634.4" cy="126.5" r="5" fill="var(--s1)" stroke="#fff" stroke-width="2"><title>Grass-trees &middot; SVM, all bands: 99.08%</title></circle><circle cx="628.7" cy="117.5" r="5" fill="var(--s2)" stroke="#fff" stroke-width="2"><title>Grass-trees &middot; PCA + SVM: 98.63%</title></circle><circle cx="520.1" cy="122.0" r="5" fill="var(--s3)" stroke="#fff" stroke-width="2"><title>Grass-trees &middot; Class-wise PCA + SVM: 90.05%</title></circle><text x="128" y="160" text-anchor="end" font-size="12" fill="var(--text-soft)" font-family="Inter,sans-serif">Hay-windrowed</text><line x1="336.7" y1="156" x2="646.0" y2="156" stroke="var(--border-strong)" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/><circle cx="646.0" cy="156.0" r="5" fill="var(--s1)" stroke="#fff" stroke-width="2"><title>Hay-windrowed &middot; SVM, all bands: 100.0%</title></circle><circle cx="632.7" cy="156.0" r="5" fill="var(--s2)" stroke="#fff" stroke-width="2"><title>Hay-windrowed &middot; PCA + SVM: 98.95%</title></circle><circle cx="336.7" cy="156.0" r="5" fill="var(--s3)" stroke="#fff" stroke-width="2"><title>Hay-windrowed &middot; Class-wise PCA + SVM: 75.55%</title></circle><text x="128" y="194" text-anchor="end" font-size="12" fill="var(--text-soft)" font-family="Inter,sans-serif">Soybean-notill</text><line x1="354.0" y1="190" x2="591.7" y2="190" stroke="var(--border-strong)" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/><circle cx="458.4" cy="190.0" r="5" fill="var(--s1)" stroke="#fff" stroke-width="2"><title>Soybean-notill &middot; SVM, all bands: 85.17%</title></circle><circle cx="354.0" cy="190.0" r="5" fill="var(--s2)" stroke="#fff" stroke-width="2"><title>Soybean-notill &middot; PCA + SVM: 76.92%</title></circle><circle cx="591.7" cy="190.0" r="5" fill="var(--s3)" stroke="#fff" stroke-width="2"><title>Soybean-notill &middot; Class-wise PCA + SVM: 95.71%</title></circle><text x="128" y="228" text-anchor="end" font-size="12" fill="var(--text-soft)" font-family="Inter,sans-serif">Soybean-mintill</text><line x1="452.7" y1="224" x2="636.4" y2="224" stroke="var(--border-strong)" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/><circle cx="499.5" cy="224.0" r="5" fill="var(--s1)" stroke="#fff" stroke-width="2"><title>Soybean-mintill &middot; SVM, all bands: 88.42%</title></circle><circle cx="452.7" cy="224.0" r="5" fill="var(--s2)" stroke="#fff" stroke-width="2"><title>Soybean-mintill &middot; PCA + SVM: 84.72%</title></circle><circle cx="636.4" cy="224.0" r="5" fill="var(--s3)" stroke="#fff" stroke-width="2"><title>Soybean-mintill &middot; Class-wise PCA + SVM: 99.24%</title></circle><text x="128" y="262" text-anchor="end" font-size="12" fill="var(--text-soft)" font-family="Inter,sans-serif">Soybean-clean</text><line x1="305.7" y1="258" x2="610.5" y2="258" stroke="var(--border-strong)" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/><circle cx="453.1" cy="258.0" r="5" fill="var(--s1)" stroke="#fff" stroke-width="2"><title>Soybean-clean &middot; SVM, all bands: 84.75%</title></circle><circle cx="305.7" cy="258.0" r="5" fill="var(--s2)" stroke="#fff" stroke-width="2"><title>Soybean-clean &middot; PCA + SVM: 73.1%</title></circle><circle cx="610.5" cy="258.0" r="5" fill="var(--s3)" stroke="#fff" stroke-width="2"><title>Soybean-clean &middot; Class-wise PCA + SVM: 97.19%</title></circle><text x="128" y="296" text-anchor="end" font-size="12" fill="var(--text-soft)" font-family="Inter,sans-serif">Woods</text><line x1="527.2" y1="292" x2="636.0" y2="292" stroke="var(--border-strong)" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/><circle cx="636.0" cy="296.5" r="5" fill="var(--s1)" stroke="#fff" stroke-width="2"><title>Woods &middot; SVM, all bands: 99.21%</title></circle><circle cx="626.0" cy="287.5" r="5" fill="var(--s2)" stroke="#fff" stroke-width="2"><title>Woods &middot; PCA + SVM: 98.42%</title></circle><circle cx="527.2" cy="292.0" r="5" fill="var(--s3)" stroke="#fff" stroke-width="2"><title>Woods &middot; Class-wise PCA + SVM: 90.61%</title></circle><line x1="140" y1="2" x2="140" y2="314" stroke="var(--border-strong)" stroke-width="1"/></svg></div><details class="tv"><summary>Data table</summary><div class="tv-scroll"><table><thead><tr><th>Class</th><th>Train px</th><th>Test px</th><th>SVM</th><th>PCA</th><th>Class-wise PCA</th></tr></thead><tbody><tr><td>Corn-notill</td><td>714</td><td>428</td><td>83.14%</td><td>75.87%</td><td>100.00%</td></tr><tr><td>Corn-mintill</td><td>415</td><td>249</td><td>76.20%</td><td>68.07%</td><td>91.71%</td></tr><tr><td>Grass-pasture</td><td>241</td><td>145</td><td>91.67%</td><td>93.81%</td><td>93.97%</td></tr><tr><td>Grass-trees</td><td>365</td><td>219</td><td>99.08%</td><td>98.63%</td><td>90.05%</td></tr><tr><td>Hay-windrowed</td><td>239</td><td>143</td><td>100.00%</td><td>98.95%</td><td>75.55%</td></tr><tr><td>Soybean-notill</td><td>486</td><td>292</td><td>85.17%</td><td>76.92%</td><td>95.71%</td></tr><tr><td>Soybean-mintill</td><td>1227</td><td>736</td><td>88.42%</td><td>84.72%</td><td>99.24%</td></tr><tr><td>Soybean-clean</td><td>296</td><td>178</td><td>84.75%</td><td>73.10%</td><td>97.19%</td></tr><tr><td>Woods</td><td>632</td><td>379</td><td>99.21%</td><td>98.42%</td><td>90.61%</td></tr><tr><td><b>Overall</b></td><td></td><td></td><td><b>89.02%</b></td><td><b>85.75%</b></td><td><b>95.44%</b></td></tr></tbody></table></div></details></div></div>
+</div></section>
+<section class="p-sec"><div class="wrap">
+  <h2>Reading the errors</h2>
+  <p class="sub">Two observations the paper draws from the ROC curves and the misclassification maps.</p>
+  <ul class="finds two">
+    <li><span class="lab">Training data helps</span><p class="big">The two best-separated classes are the two largest</p><p>Corn-notill has the highest area under the curve at 0.78 and Soybean-mintill the second highest &mdash; and they hold 714 and 1,227 training pixels respectively, the two biggest training sets in the study.</p></li>
+    <li><span class="lab">Two perfect classes</span><p class="big">100% accuracy, one per method</p><p>Hay-windrowed has no misclassified pixels under the plain SVM; Corn-notill has none under class-wise PCA.</p></li>
+  </ul>
+</div></section>
+<section class="p-sec p-sec-alt"><div class="wrap">
+  <h2>Figures from the paper</h2>
+  <ul class="figs two">
+    <figure><img src="../assets/papers/icca-2020/indian-pines.jpg" alt="The Indian Pines scene and its colour-coded ground reference map" loading="lazy" decoding="async"><figcaption><b>Figure 1.</b> The Indian Pines field &mdash; (a) the original image, (b) the ground reference, with the sixteen ground-truth classes colour-coded.</figcaption></figure>
+    <figure><img src="../assets/papers/icca-2020/roc.jpg" alt="ROC curves for nine classes plotting true positive rate against false positive rate" loading="lazy" decoding="async"><figcaption><b>Figure 5.</b> ROC curves for the nine individual classes. The larger the area under a curve, the more reliably the model recovers that class.</figcaption></figure>
+  </ul>
+</div></section>
+<section class="p-sec"><div class="wrap">
+  <h2>Takeaway</h2>
+  <div class="takeaway"><h2>Takeaway</h2><p>Dimensionality reduction is not automatically a win: plain PCA on this scene dropped accuracy by more than three points below simply keeping all 220 bands.</p><p>Preserving class structure through the reduction is what turns it into a win &mdash; a 6.4-point gain over the full-band baseline, from 16 features per class instead of 220 bands.</p></div>
+</div></section>
+<div class="wrap"><nav class="pnav"><a href="icqe-2024-epistemic-network-analysis.html">&larr; Epistemic network analysis (ICQE 2024)</a><a href="../publications.html">All publications</a><a href="ic4me2-2019-hybrid-selection-extraction.html">Hybrid mRMR + PCA (IC4ME2 2019) &rarr;</a></nav></div>
+</main>
+
+<footer class="wrap foot">
+  <span>&copy; <span id="yr">2026</span> Asif Ahmmed Joy</span>
+  <span class="right">
+    <span id="visit-count" hidden></span>
+    <span>Last updated <time datetime="2026-09-03">3 September 2026</time></span>
+  </span>
+</footer>
+
+<script src="../assets/main.js?v=3"></script>
+</body>
+</html>

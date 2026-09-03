@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A Comparison of Supervised and Unsupervised Dimension Reduction Methods for Hyperspectral Image Classification &mdash; Asif Ahmmed Joy</title>
+<meta name="description" content="Visual summary: PCA versus LDA versus both on the Indian Pines scene &mdash; LDA gives the best independent-test accuracy from 8 features (IEEE ECCE 2019).">
+<meta name="author" content="Asif Ahmmed Joy">
+<link rel="canonical" href="https://asifahmmedjoy.github.io/papers/ecce-2019-supervised-unsupervised.html">
+<meta name="color-scheme" content="light">
+<meta property="og:type" content="article">
+<meta property="og:title" content="A Comparison of Supervised and Unsupervised Dimension Reduction Methods for Hyperspectral Image Classification &mdash; Asif Ahmmed Joy">
+<meta property="og:description" content="Visual summary: PCA versus LDA versus both on the Indian Pines scene &mdash; LDA gives the best independent-test accuracy from 8 features (IEEE ECCE 2019).">
+<meta property="og:url" content="https://asifahmmedjoy.github.io/papers/ecce-2019-supervised-unsupervised.html">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%239d2235'/><text y='.9em' x='50%25' text-anchor='middle' font-size='62' font-family='Georgia,serif' fill='white'>A</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css?v=4">
+<link rel="stylesheet" href="../assets/paper.css?v=1">
+<!-- Analytics: GoatCounter (privacy-friendly, no cookies) -->
+<script>window.GOATCOUNTER_CODE = "asifahmmedjoy";</script>
+<script data-goatcounter="https://asifahmmedjoy.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</head>
+<body class="viz-root">
+<a class="skip" href="#main">Skip to content</a>
+
+<nav class="nav">
+  <div class="nav-in">
+    <a class="nav-brand" href="../index.html">Asif Ahmmed Joy</a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="navlinks">Menu</button>
+    <ul class="nav-links" id="navlinks">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../about.html">About</a></li>
+      <li><a href="../files/Asif_Ahmmed_Joy_CV.pdf">CV</a></li>
+      <li><a href="../news.html">News</a></li>
+      <li><a href="../research.html">Research</a></li>
+      <li><a href="../publications.html" aria-current="page">Publications</a></li>
+      <li><a href="../teaching.html">Teaching</a></li>
+      <li><a href="../contact.html">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="main">
+<header class="paper-head"><div class="wrap">
+  <p class="crumb"><a href="../publications.html">Publications</a> &middot; IEEE ECCE 2019</p>
+  <h1>A Comparison of Supervised and Unsupervised Dimension Reduction Methods for Hyperspectral Image Classification</h1>
+  <p class="paper-authors"><span class="me">Joy, A. A.</span> Hasan, M. A. M., &amp; Hossain, M. A.</p>
+  <p class="paper-venue">International Conference on Electrical, Computer and Communication Engineering (ECCE) 2019, 7&ndash;9 February 2019. IEEE, pp. 1&ndash;6.</p>
+  <ul class="paper-links">
+    <li><a class="" href="https://ieeexplore.ieee.org/document/8679360/" rel="noopener">IEEE Xplore</a></li>
+    <li><a class="" href="https://doi.org/10.1109/ECACE.2019.8679360" rel="noopener">DOI</a></li>
+    <li><a class="" href="https://github.com/joybi531/multiclass_SVM_classification_using_PCA_LDA/" rel="noopener">Code on GitHub</a></li>
+    <li><a class="back" href="../publications.html">All publications</a></li>
+  </ul>
+  <p class="thesis">PCA ignores class labels; LDA is built around them. Head to head on the Indian Pines scene, LDA holds up best on the held-out test set &mdash; from eight features, a 96.4% cut in dimensionality. Combining the two helps neither.</p>
+</div></header>
+<section class="p-sec"><div class="wrap">
+  <h2>At a glance</h2>
+  <ul class="stats">
+    <li class="stat hi"><span class="k">LDA, independent test</span><span class="v">86.43 <span class="u">%</span></span><span class="n">Best held-out result &mdash; from 8 features</span></li>
+    <li class="stat"><span class="k">PCA, independent test</span><span class="v">83.98 <span class="u">%</span></span><span class="n">21 features, ~99% of variance</span></li>
+    <li class="stat"><span class="k">PCA + LDA combined</span><span class="v">82.65 <span class="u">%</span></span><span class="n">29 features &mdash; worse than either alone</span></li>
+    <li class="stat"><span class="k">Dimensionality cut</span><span class="v">96.4 <span class="u">%</span></span><span class="n">LDA: 220 bands &rarr; 8 features</span></li>
+  </ul>
+</div></section>
+<section class="p-sec p-sec-alt"><div class="wrap">
+  <h2>The two methods</h2>
+  <p class="sub">Both are feature extraction &mdash; they build new features rather than picking existing bands. The difference is whether the class labels get a vote.</p>
+  <ul class="compare">
+    <li class="a"><h3><span class="dot"></span>PCA &mdash; unsupervised</h3><p class="lead">Maximises variance</p>
+    <ul>
+      <li>Finds a linear basis that keeps as much variance as possible</li>
+      <li>21 components cover almost 99% of the variance &mdash; a 90.45% reduction</li>
+      <li>Blind to class labels, so nothing guarantees class separability</li>
+    </ul></li>
+    <li class="b"><h3><span class="dot"></span>LDA &mdash; supervised</h3><p class="lead">Maximises class separability</p>
+    <ul>
+      <li>Maximises between-class variance while minimising within-class variance</li>
+      <li>Capped at <i>c</i>&nbsp;&minus;&nbsp;1 features &mdash; 8 for nine classes, a 96.36% reduction</li>
+      <li>Uses first- and second-order statistics of the labelled classes</li>
+    </ul></li>
+  </ul>
+</div></section>
+<section class="p-sec"><div class="wrap">
+  <h2>Results</h2>
+  <p class="sub">Nine of the sixteen ground-truth classes were used; the rest had too few training samples. Splits were identical across methods: 50% training, 30% independent test, 20% cross-validation, with <i>c</i> and &sigma; grid-searched over five runs per method.</p>
+  <div class="chart"><h3>Three accuracy measures, three methods</h3><p class="cap">OA counts every correctly classified pixel; AA averages the nine per-class accuracies; ITA is the held-out independent test set. LDA leads where it counts most &mdash; on unseen data. The axis starts at 81%, not zero.</p><ul class="legend">
+    <li><span class="sw" style="background:#2a78d6"></span>Overall accuracy</li>
+    <li><span class="sw" style="background:#eb6834"></span>Average accuracy</li>
+    <li><span class="sw" style="background:#1baf7a"></span>Independent test accuracy</li>
+  </ul><div class="svg-wrap"><svg viewBox="0 0 660 136" role="img" aria-label="Dot plot comparison"><line x1="240.9" y1="2" x2="240.9" y2="110" stroke="var(--grid)" stroke-width="1"/><text x="240.9" y="127" text-anchor="middle" font-size="10.5" fill="var(--text-mute)" font-family="Inter,sans-serif">82%</text><line x1="362.6" y1="2" x2="362.6" y2="110" stroke="var(--grid)" stroke-width="1"/><text x="362.6" y="127" text-anchor="middle" font-size="10.5" fill="var(--text-mute)" font-family="Inter,sans-serif">84%</text><line x1="484.3" y1="2" x2="484.3" y2="110" stroke="var(--grid)" stroke-width="1"/><text x="484.3" y="127" text-anchor="middle" font-size="10.5" fill="var(--text-mute)" font-family="Inter,sans-serif">86%</text><line x1="606.0" y1="2" x2="606.0" y2="110" stroke="var(--grid)" stroke-width="1"/><text x="606.0" y="127" text-anchor="middle" font-size="10.5" fill="var(--text-mute)" font-family="Inter,sans-serif">88%</text><text x="168" y="24" text-anchor="end" font-size="12" fill="var(--text-soft)" font-family="Inter,sans-serif">PCA (21 features)</text><line x1="361.4" y1="20" x2="469.1" y2="20" stroke="var(--border-strong)" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/><circle cx="469.1" cy="20.0" r="5" fill="var(--s1)" stroke="#fff" stroke-width="2"><title>PCA (21 features) &middot; Overall accuracy: 85.75%</title></circle><circle cx="368.7" cy="24.5" r="5" fill="var(--s2)" stroke="#fff" stroke-width="2"><title>PCA (21 features) &middot; Average accuracy: 84.1%</title></circle><circle cx="361.4" cy="15.5" r="5" fill="var(--s3)" stroke="#fff" stroke-width="2"><title>PCA (21 features) &middot; Independent test: 83.98%</title></circle><text x="168" y="58" text-anchor="end" font-size="12" fill="var(--text-soft)" font-family="Inter,sans-serif">LDA (8 features)</text><line x1="418.0" y1="54" x2="510.5" y2="54" stroke="var(--border-strong)" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/><circle cx="418.0" cy="49.5" r="5" fill="var(--s1)" stroke="#fff" stroke-width="2"><title>LDA (8 features) &middot; Overall accuracy: 84.91%</title></circle><circle cx="427.7" cy="58.5" r="5" fill="var(--s2)" stroke="#fff" stroke-width="2"><title>LDA (8 features) &middot; Average accuracy: 85.07%</title></circle><circle cx="510.5" cy="54.0" r="5" fill="var(--s3)" stroke="#fff" stroke-width="2"><title>LDA (8 features) &middot; Independent test: 86.43%</title></circle><text x="168" y="92" text-anchor="end" font-size="12" fill="var(--text-soft)" font-family="Inter,sans-serif">PCA + LDA (29)</text><line x1="276.8" y1="88" x2="280.4" y2="88" stroke="var(--border-strong)" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/><circle cx="276.8" cy="79.0" r="5" fill="var(--s1)" stroke="#fff" stroke-width="2"><title>PCA + LDA (29) &middot; Overall accuracy: 82.59%</title></circle><circle cx="276.8" cy="88.0" r="5" fill="var(--s2)" stroke="#fff" stroke-width="2"><title>PCA + LDA (29) &middot; Average accuracy: 82.59%</title></circle><circle cx="280.4" cy="97.0" r="5" fill="var(--s3)" stroke="#fff" stroke-width="2"><title>PCA + LDA (29) &middot; Independent test: 82.65%</title></circle><line x1="180" y1="2" x2="180" y2="110" stroke="var(--border-strong)" stroke-width="1"/></svg></div><details class="tv"><summary>Data table</summary><div class="tv-scroll"><table><thead><tr><th>Method</th><th>Features</th><th>Overall</th><th>Average</th><th>Independent test</th></tr></thead><tbody><tr><td>PCA</td><td>21</td><td>85.75%</td><td>84.10%</td><td>83.98%</td></tr><tr><td>LDA</td><td>8</td><td>84.91%</td><td>85.07%</td><td>86.43%</td></tr><tr><td>PCA + LDA</td><td>29</td><td>82.59%</td><td>82.59%</td><td>82.65%</td></tr></tbody></table></div></details></div><div style="margin-top:14px"><div class="chart"><h3>Per-class accuracy</h3><p class="cap">LDA is stronger on the harder corn and soybean classes; PCA holds a clear edge only on Soybean-mintill. The axis starts at 60%, not zero.</p><ul class="legend">
+    <li><span class="sw" style="background:#2a78d6"></span>PCA</li>
+    <li><span class="sw" style="background:#eb6834"></span>LDA</li>
+    <li><span class="sw" style="background:#1baf7a"></span>PCA + LDA</li>
+  </ul><div class="svg-wrap"><svg viewBox="0 0 700 340" role="img" aria-label="Dot plot comparison"><line x1="140.0" y1="2" x2="140.0" y2="314" stroke="var(--grid)" stroke-width="1"/><text x="140.0" y="331" text-anchor="middle" font-size="10.5" fill="var(--text-mute)" font-family="Inter,sans-serif">60%</text><line x1="266.5" y1="2" x2="266.5" y2="314" stroke="var(--grid)" stroke-width="1"/><text x="266.5" y="331" text-anchor="middle" font-size="10.5" fill="var(--text-mute)" font-family="Inter,sans-serif">70%</text><line x1="393.0" y1="2" x2="393.0" y2="314" stroke="var(--grid)" stroke-width="1"/><text x="393.0" y="331" text-anchor="middle" font-size="10.5" fill="var(--text-mute)" font-family="Inter,sans-serif">80%</text><line x1="519.5" y1="2" x2="519.5" y2="314" stroke="var(--grid)" stroke-width="1"/><text x="519.5" y="331" text-anchor="middle" font-size="10.5" fill="var(--text-mute)" font-family="Inter,sans-serif">90%</text><line x1="646.0" y1="2" x2="646.0" y2="314" stroke="var(--grid)" stroke-width="1"/><text x="646.0" y="331" text-anchor="middle" font-size="10.5" fill="var(--text-mute)" font-family="Inter,sans-serif">100%</text><text x="128" y="24" text-anchor="end" font-size="12" fill="var(--text-soft)" font-family="Inter,sans-serif">Corn-notill</text><line x1="323.0" y1="20" x2="407.9" y2="20" stroke="var(--border-strong)" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/><circle cx="340.8" cy="20.0" r="5" fill="var(--s1)" stroke="#fff" stroke-width="2"><title>Corn-notill &middot; PCA: 75.87%</title></circle><circle cx="407.9" cy="20.0" r="5" fill="var(--s2)" stroke="#fff" stroke-width="2"><title>Corn-notill &middot; LDA: 81.18%</title></circle><circle cx="323.0" cy="20.0" r="5" fill="var(--s3)" stroke="#fff" stroke-width="2"><title>Corn-notill &middot; PCA + LDA: 74.47%</title></circle><text x="128" y="58" text-anchor="end" font-size="12" fill="var(--text-soft)" font-family="Inter,sans-serif">Corn-mintill</text><line x1="181.1" y1="54" x2="341.1" y2="54" stroke="var(--border-strong)" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/><circle cx="242.1" cy="54.0" r="5" fill="var(--s1)" stroke="#fff" stroke-width="2"><title>Corn-mintill &middot; PCA: 68.07%</title></circle><circle cx="341.1" cy="54.0" r="5" fill="var(--s2)" stroke="#fff" stroke-width="2"><title>Corn-mintill &middot; LDA: 75.9%</title></circle><circle cx="181.1" cy="54.0" r="5" fill="var(--s3)" stroke="#fff" stroke-width="2"><title>Corn-mintill &middot; PCA + LDA: 63.25%</title></circle><text x="128" y="92" text-anchor="end" font-size="12" fill="var(--text-soft)" font-family="Inter,sans-serif">Grass-pasture</text><line x1="567.7" y1="88" x2="593.8" y2="88" stroke="var(--border-strong)" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/><circle cx="567.7" cy="88.0" r="5" fill="var(--s1)" stroke="#fff" stroke-width="2"><title>Grass-pasture &middot; PCA: 93.81%</title></circle><circle cx="593.8" cy="88.0" r="5" fill="var(--s2)" stroke="#fff" stroke-width="2"><title>Grass-pasture &middot; LDA: 95.87%</title></circle><circle cx="580.7" cy="88.0" r="5" fill="var(--s3)" stroke="#fff" stroke-width="2"><title>Grass-pasture &middot; PCA + LDA: 94.84%</title></circle><text x="128" y="126" text-anchor="end" font-size="12" fill="var(--text-soft)" font-family="Inter,sans-serif">Grass-trees</text><line x1="628.7" y1="122" x2="646.0" y2="122" stroke="var(--border-strong)" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/><circle cx="628.7" cy="117.5" r="5" fill="var(--s1)" stroke="#fff" stroke-width="2"><title>Grass-trees &middot; PCA: 98.63%</title></circle><circle cx="631.7" cy="126.5" r="5" fill="var(--s2)" stroke="#fff" stroke-width="2"><title>Grass-trees &middot; LDA: 98.87%</title></circle><circle cx="646.0" cy="122.0" r="5" fill="var(--s3)" stroke="#fff" stroke-width="2"><title>Grass-trees &middot; PCA + LDA: 100.0%</title></circle><text x="128" y="160" text-anchor="end" font-size="12" fill="var(--text-soft)" font-family="Inter,sans-serif">Hay-windrowed</text><line x1="632.7" y1="156" x2="646.0" y2="156" stroke="var(--border-strong)" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/><circle cx="632.7" cy="156.0" r="5" fill="var(--s1)" stroke="#fff" stroke-width="2"><title>Hay-windrowed &middot; PCA: 98.95%</title></circle><circle cx="646.0" cy="151.5" r="5" fill="var(--s2)" stroke="#fff" stroke-width="2"><title>Hay-windrowed &middot; LDA: 100.0%</title></circle><circle cx="646.0" cy="160.5" r="5" fill="var(--s3)" stroke="#fff" stroke-width="2"><title>Hay-windrowed &middot; PCA + LDA: 100.0%</title></circle><text x="128" y="194" text-anchor="end" font-size="12" fill="var(--text-soft)" font-family="Inter,sans-serif">Soybean-notill</text><line x1="243.7" y1="190" x2="367.1" y2="190" stroke="var(--border-strong)" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/><circle cx="354.0" cy="190.0" r="5" fill="var(--s1)" stroke="#fff" stroke-width="2"><title>Soybean-notill &middot; PCA: 76.92%</title></circle><circle cx="367.1" cy="190.0" r="5" fill="var(--s2)" stroke="#fff" stroke-width="2"><title>Soybean-notill &middot; LDA: 77.95%</title></circle><circle cx="243.7" cy="190.0" r="5" fill="var(--s3)" stroke="#fff" stroke-width="2"><title>Soybean-notill &middot; PCA + LDA: 68.2%</title></circle><text x="128" y="228" text-anchor="end" font-size="12" fill="var(--text-soft)" font-family="Inter,sans-serif">Soybean-mintill</text><line x1="365.2" y1="224" x2="460.4" y2="224" stroke="var(--border-strong)" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/><circle cx="452.7" cy="219.5" r="5" fill="var(--s1)" stroke="#fff" stroke-width="2"><title>Soybean-mintill &middot; PCA: 84.72%</title></circle><circle cx="365.2" cy="224.0" r="5" fill="var(--s2)" stroke="#fff" stroke-width="2"><title>Soybean-mintill &middot; LDA: 77.8%</title></circle><circle cx="460.4" cy="228.5" r="5" fill="var(--s3)" stroke="#fff" stroke-width="2"><title>Soybean-mintill &middot; PCA + LDA: 85.33%</title></circle><text x="128" y="262" text-anchor="end" font-size="12" fill="var(--text-soft)" font-family="Inter,sans-serif">Soybean-clean</text><line x1="167.6" y1="258" x2="390.8" y2="258" stroke="var(--border-strong)" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/><circle cx="305.7" cy="258.0" r="5" fill="var(--s1)" stroke="#fff" stroke-width="2"><title>Soybean-clean &middot; PCA: 73.1%</title></circle><circle cx="390.8" cy="258.0" r="5" fill="var(--s2)" stroke="#fff" stroke-width="2"><title>Soybean-clean &middot; LDA: 79.83%</title></circle><circle cx="167.6" cy="258.0" r="5" fill="var(--s3)" stroke="#fff" stroke-width="2"><title>Soybean-clean &middot; PCA + LDA: 62.18%</title></circle><text x="128" y="296" text-anchor="end" font-size="12" fill="var(--text-soft)" font-family="Inter,sans-serif">Woods</text><line x1="625.9" y1="292" x2="630.9" y2="292" stroke="var(--border-strong)" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/><circle cx="626.0" cy="292.0" r="5" fill="var(--s1)" stroke="#fff" stroke-width="2"><title>Woods &middot; PCA: 98.42%</title></circle><circle cx="630.9" cy="301.0" r="5" fill="var(--s2)" stroke="#fff" stroke-width="2"><title>Woods &middot; LDA: 98.81%</title></circle><circle cx="625.9" cy="283.0" r="5" fill="var(--s3)" stroke="#fff" stroke-width="2"><title>Woods &middot; PCA + LDA: 98.41%</title></circle><line x1="140" y1="2" x2="140" y2="314" stroke="var(--border-strong)" stroke-width="1"/></svg></div><details class="tv"><summary>Data table</summary><div class="tv-scroll"><table><thead><tr><th>Class</th><th>Train px</th><th>Test px</th><th>PCA</th><th>LDA</th><th>PCA + LDA</th></tr></thead><tbody><tr><td>Corn-notill</td><td>714</td><td>428</td><td>75.87%</td><td>81.18%</td><td>74.47%</td></tr><tr><td>Corn-mintill</td><td>415</td><td>249</td><td>68.07%</td><td>75.90%</td><td>63.25%</td></tr><tr><td>Grass-pasture</td><td>241</td><td>145</td><td>93.81%</td><td>95.87%</td><td>94.84%</td></tr><tr><td>Grass-trees</td><td>365</td><td>219</td><td>98.63%</td><td>98.87%</td><td>100.00%</td></tr><tr><td>Hay-windrowed</td><td>239</td><td>143</td><td>98.95%</td><td>100.00%</td><td>100.00%</td></tr><tr><td>Soybean-notill</td><td>486</td><td>292</td><td>76.92%</td><td>77.95%</td><td>68.20%</td></tr><tr><td>Soybean-mintill</td><td>1227</td><td>736</td><td>84.72%</td><td>77.80%</td><td>85.33%</td></tr><tr><td>Soybean-clean</td><td>296</td><td>178</td><td>73.10%</td><td>79.83%</td><td>62.18%</td></tr><tr><td>Woods</td><td>632</td><td>379</td><td>98.42%</td><td>98.81%</td><td>98.41%</td></tr><tr><td><b>Overall</b></td><td></td><td></td><td><b>85.75%</b></td><td><b>84.91%</b></td><td><b>82.59%</b></td></tr><tr><td><b>Average</b></td><td></td><td></td><td><b>84.10%</b></td><td><b>85.07%</b></td><td><b>82.59%</b></td></tr><tr><td><b>Independent test</b></td><td></td><td></td><td><b>83.98%</b></td><td><b>86.43%</b></td><td><b>82.65%</b></td></tr></tbody></table></div></details></div></div>
+</div></section>
+<section class="p-sec p-sec-alt"><div class="wrap">
+  <h2>Figures from the paper</h2>
+  <ul class="figs">
+    <figure><img src="../assets/papers/ecce-2019/indian-pines.jpg" alt="The Indian Pines hyperspectral cube as a composite colour image and its ground reference map" loading="lazy" decoding="async"><figcaption><b>Figure 1.</b> The Indian Pines field &mdash; (a) the composite colour image with its stack of spectral bands, (b) the ground reference with each class labelled. The scene is about two-thirds agriculture and one-third forest and other perennial vegetation.</figcaption></figure>
+  </ul>
+</div></section>
+<section class="p-sec"><div class="wrap">
+  <h2>Takeaway</h2>
+  <div class="takeaway"><h2>Takeaway</h2><p>Supervision pays where it matters. LDA generalises best to the independent test set from a third as many features as PCA needs &mdash; even though PCA edges it on overall accuracy over the full data.</p><p>Concatenating both feature sets is the worst of the three on every measure, so the two reductions are not complementary in this naive form.</p><p>The code and data for this study are public: <a href="https://github.com/joybi531/multiclass_SVM_classification_using_PCA_LDA/">joybi531/multiclass_SVM_classification_using_PCA_LDA</a>.</p></div>
+</div></section>
+<div class="wrap"><nav class="pnav"><a href="ic4me2-2019-hybrid-selection-extraction.html">&larr; Hybrid mRMR + PCA (IC4ME2 2019)</a><a href="../publications.html">All publications</a></nav></div>
+</main>
+
+<footer class="wrap foot">
+  <span>&copy; <span id="yr">2026</span> Asif Ahmmed Joy</span>
+  <span class="right">
+    <span id="visit-count" hidden></span>
+    <span>Last updated <time datetime="2026-09-03">3 September 2026</time></span>
+  </span>
+</footer>
+
+<script src="../assets/main.js?v=3"></script>
+</body>
+</html>

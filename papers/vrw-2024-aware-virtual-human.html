@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Simulation of an Aware Geriatric Virtual Human in Mixed Reality &mdash; Asif Ahmmed Joy</title>
+<meta name="description" content="Visual summary of the IEEE VRW 2024 demo paper: how an AR geriatric virtual human is modelled, animated and driven by a human in the loop on HoloLens 2.">
+<meta name="author" content="Asif Ahmmed Joy">
+<link rel="canonical" href="https://asifahmmedjoy.github.io/papers/vrw-2024-aware-virtual-human.html">
+<meta name="color-scheme" content="light">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Simulation of an Aware Geriatric Virtual Human in Mixed Reality &mdash; Asif Ahmmed Joy">
+<meta property="og:description" content="Visual summary of the IEEE VRW 2024 demo paper: how an AR geriatric virtual human is modelled, animated and driven by a human in the loop on HoloLens 2.">
+<meta property="og:url" content="https://asifahmmedjoy.github.io/papers/vrw-2024-aware-virtual-human.html">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%239d2235'/><text y='.9em' x='50%25' text-anchor='middle' font-size='62' font-family='Georgia,serif' fill='white'>A</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css?v=4">
+<link rel="stylesheet" href="../assets/paper.css?v=1">
+<!-- Analytics: GoatCounter (privacy-friendly, no cookies) -->
+<script>window.GOATCOUNTER_CODE = "asifahmmedjoy";</script>
+<script data-goatcounter="https://asifahmmedjoy.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</head>
+<body class="viz-root">
+<a class="skip" href="#main">Skip to content</a>
+
+<nav class="nav">
+  <div class="nav-in">
+    <a class="nav-brand" href="../index.html">Asif Ahmmed Joy</a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="navlinks">Menu</button>
+    <ul class="nav-links" id="navlinks">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../about.html">About</a></li>
+      <li><a href="../files/Asif_Ahmmed_Joy_CV.pdf">CV</a></li>
+      <li><a href="../news.html">News</a></li>
+      <li><a href="../research.html">Research</a></li>
+      <li><a href="../publications.html" aria-current="page">Publications</a></li>
+      <li><a href="../teaching.html">Teaching</a></li>
+      <li><a href="../contact.html">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="main">
+<header class="paper-head"><div class="wrap">
+  <p class="crumb"><a href="../publications.html">Publications</a> &middot; IEEE VRW 2024</p>
+  <h1>Simulation of an Aware Geriatric Virtual Human in Mixed Reality</h1>
+  <p class="paper-authors"><span class="me">Ahmmed, A.</span> Butts, E., Naeiji, K., Thiamwong, L., &amp; Daher, S.</p>
+  <p class="paper-venue">IEEE Conference on Virtual Reality and 3D User Interfaces Abstracts and Workshops (VRW) 2024, pp. 1162&ndash;1163. Demo / short paper.</p>
+  <ul class="paper-links">
+    <li><a class="pdf" href="https://par.nsf.gov/servlets/purl/10562202" rel="noopener">Free PDF</a></li>
+    <li><a class="" href="https://ieeexplore.ieee.org/document/10536369/" rel="noopener">IEEE Xplore</a></li>
+    <li><a class="" href="https://doi.org/10.1109/VRW62533.2024.00375" rel="noopener">DOI</a></li>
+    <li><a class="back" href="../publications.html">All publications</a></li>
+  </ul>
+  <p class="thesis">The demo paper for the system: how an embodied older adult is modelled, animated, driven by a human in the loop over a TCP link, and made to seem aware of the room and of the conversation.</p>
+</div></header>
+<section class="p-sec"><div class="wrap">
+  <h2>At a glance</h2>
+  <ul class="stats">
+    <li class="stat"><span class="k">Caregivers interviewed first</span><span class="v">10</span><span class="n">Before any training content was written</span></li>
+    <li class="stat"><span class="k">Pilot participants</span><span class="v">20</span><span class="n">Professors, students and working caregivers</span></li>
+    <li class="stat hi"><span class="k">Longest conversation held</span><span class="v">16 <span class="u">min</span></span><span class="n">Just under, with a single virtual human</span></li>
+    <li class="stat"><span class="k">Display</span><span class="v">HoloLens 2</span><span class="n">Unity 3D, C#</span></li>
+  </ul>
+</div></section>
+<section class="p-sec p-sec-alt"><div class="wrap">
+  <h2>The demographic pressure behind it</h2>
+  <p class="sub">Two figures from the paper&rsquo;s motivation section.</p>
+  <ul class="specs">
+    <li><span class="v">34.2%</span><span class="k">Growth in the US population aged 65+ over the last decade</span></li>
+    <li><span class="v">23.4%</span><span class="k">Predicted share of the US population aged 65+ by 2034</span></li>
+  </ul>
+</div></section>
+<section class="p-sec"><div class="wrap">
+  <h2>How a reply reaches the user</h2>
+  <p class="sub">A human controller listens live and presses a button; everything downstream is automatic.</p>
+  <ul class="flow c4">
+    <li><h3>User speaks</h3><p>The participant asks the virtual human a question out loud.</p></li>
+    <li><h3>Controller selects</h3><p>A hidden operator picks a matching reply from the Unity GUI, built from a spreadsheet of responses.</p></li>
+    <li><h3>Signal over TCP</h3><p>A bidirectional socket link carries the choice &mdash; the HoloLens 2 acts as server, the controller&rsquo;s PC as client.</p></li>
+    <li><h3>Virtual human answers</h3><p>A custom plugin fires the audio, visemes, facial expression and body gesture together.</p></li>
+  </ul>
+</div></section>
+<section class="p-sec p-sec-alt"><div class="wrap">
+  <h2>What is in the model</h2>
+  <p class="sub">All figures from the paper&rsquo;s description of the 3D asset.</p>
+  <ul class="specs">
+    <li><span class="v">778,092</span><span class="k">Vertices</span></li>
+    <li><span class="v">1,496,271</span><span class="k">Edges</span></li>
+    <li><span class="v">719,428</span><span class="k">Faces</span></li>
+    <li><span class="v">67</span><span class="k">Joints in the rig</span></li>
+    <li><span class="v">2048&times;2048</span><span class="k">Skin texture resolution</span></li>
+    <li><span class="v">13</span><span class="k">Viseme groups for lip sync</span></li>
+  </ul><div class="chart-grid two" style="margin-top:18px"><div class="chart"><h3>Visemes rigged as blend shapes</h3><p class="cap">Mouth shapes driven by the SALSA LipSync suite as the audio plays.</p><ul class="tags"><li>p-m-b</li><li>f-v</li><li>t-d</li><li>k-g</li><li>ch</li><li>a</li><li>s</li><li>n</li><li>l</li><li>r</li><li>e-ih</li><li>o</li><li>th</li></ul></div><div class="chart"><h3>Expressions and body animations</h3><p class="cap">Emotions complemented by nuanced actions and everyday gestures.</p><ul class="tags"><li>happiness</li><li>anger</li><li>sadness</li><li>surprise</li><li>brow raising</li><li>blinking</li><li>waving</li><li>sitting</li><li>pointing</li></ul></div></div>
+</div></section>
+<section class="p-sec"><div class="wrap">
+  <h2>Awareness, concretely</h2>
+  <p class="sub">Three mechanisms give the impression that the virtual human notices things.</p>
+  <ul class="flow c3 plain">
+    <li><h3>Remembers the person</h3><p>Names and outfit colours are entered into the database ahead of the session and linked to response buttons.</p></li>
+    <li><h3>Controls the room</h3><p>A lamp and a radio are switched on and off &mdash; the operator works the remote on her behalf.</p></li>
+    <li><h3>Carries the thread</h3><p>Details from an earlier conversation come back in a later one.</p></li>
+  </ul>
+</div></section>
+<section class="p-sec p-sec-alt"><div class="wrap">
+  <h2>Figures from the paper</h2>
+  <ul class="figs two">
+    <figure><img src="../assets/papers/vrw-2024/setup.jpg" alt="Three-panel demo setup: the 3D virtual human, the human controller behind a blue screen, and a user interacting" loading="lazy" decoding="async"><figcaption><b>Figure 1.</b> Demo setup &mdash; (A) the 3D virtual geriatric human, (B) the human-in-the-loop station behind the blue screen, (C) a user interacting with the virtual human.</figcaption></figure>
+    <figure><img src="../assets/papers/vrw-2024/workflow.jpg" alt="Interaction workflow diagram showing speech, button press, response database and the HoloLens" loading="lazy" decoding="async"><figcaption><b>Figure 2.</b> The user interaction workflow, showing what happens behind the scenes between the user speaking and the virtual human replying.</figcaption></figure>
+  </ul>
+</div></section>
+<section class="p-sec"><div class="wrap">
+  <h2>Feedback and next steps</h2>
+  <div class="takeaway"><h2>Takeaway</h2><p>Twenty professional caregivers ran through predefined scenarios. Feedback was positive on user friendliness, interactivity and the realism of the virtual human; the asks were for mobility and a broader range of responses.</p><p>The paper frames the technology as generalisable &mdash; any application where a person needs to interact with a human or a stand-in for one, from healthcare providers simulating patients to virtual assistants.</p><p>Next: training content for difficult situations, and generative AI to manage the virtual human&rsquo;s responses in place of the operator.</p></div>
+</div></section>
+<div class="wrap"><nav class="pnav"><a href="iva-2024-social-presence-empathy.html">&larr; Social presence &amp; empathy (IVA 2024)</a><a href="../publications.html">All publications</a><a href="icqe-2024-epistemic-network-analysis.html">Epistemic network analysis (ICQE 2024) &rarr;</a></nav></div>
+</main>
+
+<footer class="wrap foot">
+  <span>&copy; <span id="yr">2026</span> Asif Ahmmed Joy</span>
+  <span class="right">
+    <span id="visit-count" hidden></span>
+    <span>Last updated <time datetime="2026-09-03">3 September 2026</time></span>
+  </span>
+</footer>
+
+<script src="../assets/main.js?v=3"></script>
+</body>
+</html>

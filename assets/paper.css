@@ -1,0 +1,188 @@
+/* ==========================================================================
+   Paper detail pages — visual summaries
+   Extends assets/style.css (tokens, nav, footer come from there).
+   ========================================================================== */
+
+.viz-root{
+  /* categorical slots — validated (light surface #fff): blue / orange / aqua */
+  --s1:#2a78d6;
+  --s2:#eb6834;
+  --s3:#1baf7a;
+  --s1-wash:#e9f1fc;
+  --s2-wash:#fdefe9;
+  --s3-wash:#e7f7f1;
+  --grid:#e6e6e0;
+}
+
+/* ---------- paper header ---------- */
+.paper-head{padding:38px 0 30px;border-bottom:1px solid var(--border);background:var(--bg-soft);overflow-wrap:break-word}
+.paper-head .crumb a{color:var(--text-mute)}
+.paper-head h1{font-size:clamp(1.55rem,3.2vw,2.15rem);max-width:26ch;max-width:min(100%,32ch);margin-bottom:12px}
+@media (min-width:820px){.paper-head h1{max-width:44ch}}
+.paper-authors{font-size:.94rem;color:var(--text-soft);margin:0 0 3px;max-width:80ch}
+.paper-authors .me{color:var(--text);font-weight:700}
+.paper-venue{font-size:.9rem;color:var(--text-mute);font-style:italic;margin:0 0 16px;max-width:80ch}
+.paper-links{display:flex;gap:7px;flex-wrap:wrap;list-style:none;margin:0}
+.paper-links a{
+  font-size:.78rem;font-weight:600;letter-spacing:.02em;padding:5px 11px;border-radius:5px;
+  border:1px solid var(--border);color:var(--text-soft);background:var(--surface);
+}
+.paper-links a:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-soft);text-decoration:none}
+.paper-links a.pdf{border-color:rgba(18,87,196,.3);color:var(--blue);background:var(--blue-soft)}
+.paper-links a.pdf:hover{border-color:var(--blue);background:#dbe8fb;color:var(--blue)}
+.paper-links a.back{border-color:var(--border-strong)}
+
+/* ---------- one-line thesis ---------- */
+.thesis{
+  margin:26px 0 0;padding:18px 22px;border-left:3px solid var(--accent);
+  background:var(--accent-soft);border-radius:0 var(--radius) var(--radius) 0;
+  font-family:var(--font-display);font-size:1.12rem;line-height:1.5;color:var(--text);
+  max-width:74ch;
+}
+
+/* ---------- stat tiles ---------- */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;list-style:none;margin:0}
+.stat{
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+  padding:16px 18px;
+}
+.stat .k{display:block;font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text-mute);margin-bottom:7px}
+.stat .v{display:block;font-size:1.72rem;font-weight:700;line-height:1.06;letter-spacing:-.02em;color:var(--text);font-variant-numeric:tabular-nums}
+.stat .v .u{font-size:.86rem;font-weight:600;color:var(--text-mute);letter-spacing:0}
+.stat .n{display:block;font-size:.8rem;color:var(--text-mute);margin-top:6px;line-height:1.4}
+.stat.hi{background:var(--accent-soft);border-color:rgba(157,34,53,.22)}
+.stat.hi .v{color:var(--accent)}
+
+/* ---------- section shell ---------- */
+.p-sec{padding:40px 0;border-bottom:1px solid var(--border);overflow-wrap:break-word}
+.p-sec:last-of-type{border-bottom:0}
+.p-sec>.wrap>h2{font-size:1.32rem;margin-bottom:6px}
+.p-sec .sub{font-size:.93rem;color:var(--text-mute);margin:0 0 22px;max-width:74ch}
+.p-sec-alt{background:var(--bg-soft)}
+
+/* ---------- flow / pipeline ---------- */
+.flow{display:grid;gap:12px;grid-template-columns:1fr;list-style:none;counter-reset:fl}
+@media (min-width:720px){.flow.c3{grid-template-columns:repeat(3,1fr)}.flow.c4{grid-template-columns:repeat(4,1fr)}.flow.c2{grid-template-columns:repeat(2,1fr)}}
+.flow li{
+  position:relative;background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--radius);padding:16px 18px 16px 18px;
+}
+.flow li::before{
+  counter-increment:fl;content:counter(fl);
+  display:inline-flex;align-items:center;justify-content:center;
+  width:22px;height:22px;border-radius:50%;background:var(--accent);color:#fff;
+  font-size:.72rem;font-weight:700;margin-bottom:9px;
+}
+.flow h3{font-size:.97rem;margin:0 0 5px}
+.flow p{font-size:.87rem;color:var(--text-soft);margin:0}
+.flow.plain li::before{display:none}
+
+/* ---------- spec chips ---------- */
+.specs{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;list-style:none}
+.specs li{background:var(--bg-sunk);border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px 14px}
+.specs .v{display:block;font-size:1.02rem;font-weight:700;color:var(--text);font-variant-numeric:tabular-nums;line-height:1.2}
+.specs .k{display:block;font-size:.76rem;color:var(--text-mute);margin-top:4px}
+
+/* ---------- two-condition compare ---------- */
+.compare{display:grid;gap:14px;grid-template-columns:1fr;list-style:none}
+@media (min-width:720px){.compare{grid-template-columns:1fr 1fr}}
+.compare li{border:1px solid var(--border);border-radius:var(--radius);padding:18px 20px;background:var(--surface)}
+.compare li.a{border-color:rgba(42,120,214,.32);background:var(--s1-wash)}
+.compare li.b{border-color:rgba(235,104,52,.30);background:var(--s2-wash)}
+.compare h3{font-size:1rem;margin:0 0 4px;display:flex;align-items:center;gap:8px}
+.compare h3 .dot{width:10px;height:10px;border-radius:50%;flex:none}
+.compare li.a h3 .dot{background:var(--s1)}
+.compare li.b h3 .dot{background:var(--s2)}
+.compare .lead{font-size:.86rem;color:var(--text-mute);margin:0 0 10px}
+.compare ul{list-style:none;margin:0}
+.compare ul li{border:0;background:none;padding:4px 0 4px 18px;position:relative;font-size:.9rem;color:var(--text-soft)}
+.compare ul li::before{content:"";position:absolute;left:2px;top:12px;width:6px;height:6px;border-radius:50%;background:var(--border-strong)}
+
+/* ---------- charts ---------- */
+.chart{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px 22px 16px}
+.chart + .chart{margin-top:14px}
+.chart h3{font-size:1rem;margin:0 0 3px}
+.chart .cap{font-size:.84rem;color:var(--text-mute);margin:0 0 14px}
+.chart svg{width:100%;height:auto;display:block;overflow:visible}
+.chart-grid{display:grid;gap:14px;grid-template-columns:1fr}
+@media (min-width:820px){.chart-grid.two{grid-template-columns:1fr 1fr}}
+.legend{display:flex;gap:16px;flex-wrap:wrap;list-style:none;margin:0 0 14px;font-size:.83rem;color:var(--text-soft)}
+.legend li{display:flex;align-items:center;gap:7px}
+.legend .sw{width:11px;height:11px;border-radius:3px;flex:none}
+.tv{margin-top:12px;font-size:.83rem}
+.tv summary{cursor:pointer;color:var(--text-mute);font-size:.8rem}
+.tv summary:hover{color:var(--accent)}
+.tv-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%}
+.tv table{border-collapse:collapse;width:100%;min-width:340px;margin-top:10px;font-variant-numeric:tabular-nums}
+.tv th,.tv td{text-align:right;padding:5px 8px;border-bottom:1px solid var(--border);font-size:.82rem}
+.tv th:first-child,.tv td:first-child{text-align:left}
+.tv thead th{color:var(--text-mute);font-weight:600;font-size:.76rem;text-transform:uppercase;letter-spacing:.05em}
+
+
+/* wide charts scroll inside their own card on small screens, so labels stay legible */
+.chart-grid>*,.chart,.stats>*,.figs>*,.compare>*,.finds>*,.flow>*,.specs>*{min-width:0}
+.chart .svg-wrap{max-width:100%;min-width:0}
+@media (max-width:680px){
+  .chart .svg-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px}
+  .chart .svg-wrap svg{min-width:520px}
+  .dist .track span{font-size:.72rem}
+  .chart{padding:18px 16px 14px}
+}
+
+/* segmented distribution bar */
+.dist{margin:0}
+.dist .track{display:flex;gap:2px;height:34px;margin:8px 0 10px}
+.dist .track span{
+  display:flex;align-items:center;justify-content:center;
+  font-size:.78rem;font-weight:700;color:#fff;border-radius:3px;min-width:0;
+}
+.dist .keys{display:flex;flex-wrap:wrap;gap:14px;list-style:none;font-size:.82rem;color:var(--text-soft)}
+.dist .keys li{display:flex;align-items:center;gap:7px}
+.dist .keys .sw{width:11px;height:11px;border-radius:3px;flex:none}
+
+/* ---------- figures ---------- */
+.figs{display:grid;gap:18px;grid-template-columns:1fr;list-style:none}
+@media (min-width:760px){.figs.two{grid-template-columns:1fr 1fr}}
+.figs figure{margin:0;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
+.figs img{width:100%;height:auto;background:#fff}
+.figs figcaption{font-size:.82rem;color:var(--text-mute);padding:11px 14px;line-height:1.45;border-top:1px solid var(--border)}
+.figs figcaption b{color:var(--text-soft);font-weight:600}
+
+/* ---------- quote ---------- */
+.pq{margin:0;padding:20px 24px;background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--s1);border-radius:0 var(--radius) var(--radius) 0}
+.pq p{font-family:var(--font-display);font-size:1.05rem;line-height:1.55;color:var(--text);margin:0 0 8px}
+.pq footer{font-size:.82rem;color:var(--text-mute)}
+
+/* ---------- findings list ---------- */
+.finds{display:grid;gap:12px;grid-template-columns:1fr;list-style:none}
+@media (min-width:760px){.finds.two{grid-template-columns:1fr 1fr}}
+.finds li{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px 18px}
+.finds .lab{display:block;font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:7px}
+.finds p{font-size:.9rem;color:var(--text-soft);margin:0}
+.finds .big{font-size:1.05rem;color:var(--text);font-weight:600;margin:0 0 5px}
+
+/* up / flat markers */
+.mk{display:inline-flex;align-items:center;gap:6px;font-size:.78rem;font-weight:700;padding:3px 9px;border-radius:99px}
+.mk.up{background:var(--s3-wash);color:#0f6b4b}
+.mk.flat{background:var(--bg-sunk);color:var(--text-mute)}
+
+/* ---------- takeaway ---------- */
+.takeaway{background:var(--surface);border:1px solid var(--border-strong);border-radius:var(--radius);padding:22px 24px;max-width:78ch}
+.takeaway h2{font-size:1.05rem;margin:0 0 8px}
+.takeaway p{font-size:.95rem;color:var(--text-soft);margin:0 0 .7em}
+.takeaway p:last-child{margin-bottom:0}
+
+/* ---------- prev/next ---------- */
+.pnav{display:flex;gap:12px;flex-wrap:wrap;padding:26px 0 0}
+.pnav a{font-size:.88rem;font-weight:600}
+
+/* ---------- details button on publications list ---------- */
+.pub-links a.details{
+  background:var(--accent);border-color:var(--accent);color:#fff;
+}
+.pub-links a.details:hover{background:var(--accent-hover);border-color:var(--accent-hover);color:#fff}
+
+@media print{
+  .paper-links,.pnav{display:none}
+  .chart,.stat,.flow li,.figs figure{break-inside:avoid}
+}
