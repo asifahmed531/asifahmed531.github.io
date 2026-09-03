@@ -50,6 +50,22 @@ If the file is missing the page falls back to an "AJ" placeholder automatically.
 
 **Change the "last updated" date** — the footer at the bottom of each page.
 
+## A project that is built but not published
+
+The dissertation project page (`aware-virtual-humans-in-mixed-reality.html`) is finished
+but deliberately kept off the site while the work is unfinished. It is **not** in this repo —
+it sits in `_site-drafts/projects/` next to the site folder on the local machine, so nothing
+about it is served or browsable here.
+
+Its tile is still in `research.html` and `index.html`, commented out and marked
+`HIDDEN PROJECT`. To publish it again:
+
+1. Copy `_site-drafts/projects/aware-virtual-humans-in-mixed-reality.html` into `projects/`.
+2. In `research.html` and `index.html`, delete the `<!-- ===== HIDDEN PROJECT` opener and
+   its `===== end hidden project ===== -->` closer so the tile becomes live markup again.
+3. Add a `<url>` entry for the page back into `sitemap.xml`.
+4. On `index.html`, decide whether to keep three cards or drop the mixed-methods one.
+
 ## Analytics
 
 Visitor statistics come from [GoatCounter](https://www.goatcounter.com) — free for personal
