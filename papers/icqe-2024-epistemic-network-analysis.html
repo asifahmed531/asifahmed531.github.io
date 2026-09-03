@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/style.css?v=4">
-<link rel="stylesheet" href="../assets/paper.css?v=1">
+<link rel="stylesheet" href="../assets/paper.css?v=2">
 <!-- Analytics: GoatCounter (privacy-friendly, no cookies) -->
 <script>window.GOATCOUNTER_CODE = "asifahmmedjoy";</script>
 <script data-goatcounter="https://asifahmmedjoy.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
@@ -58,6 +58,19 @@
   </ul>
   <p class="thesis">Ten nursing assistants were asked, in hour-long interviews, both what their days actually look like and what their training covered. Mapping the two as networks showed the gap: on the job, empathy is what communication is built on. In training, it barely appears.</p>
   <p class="partof">Part of the project <a href="../projects/geriatric-virtual-human-simulation.html">Embodied Virtual Human Simulation for Caregiver Training</a></p>
+  <aside class="plain">
+    <h2>In plain terms</h2>
+    <p>Nursing assistants get trained, and then they go to work. This study asks whether those two things line up.</p>
+    <p>Ten of them were interviewed for about an hour each, and asked two separate things: what their working day actually involves, and what their training covered. Every sentence was then labelled by topic, and the labels were drawn as a <strong>network</strong> &mdash; topics that keep coming up together are placed close to one another. Laying the two networks over each other shows what the job demands but the training never supplies.</p>
+  </aside>
+  <nav class="walk" aria-label="Walkthrough steps">
+    <h2>Walk through it in 3 steps</h2>
+    <ol>
+      <li><a href="#method">The method in four steps<span class="why">How interviews become a network</span></a></li>
+      <li><a href="#findings">What the networks showed<span class="why">The gap between training and the job</span></a></li>
+      <li><a href="#takeaway">Why this study exists<span class="why">What follows from that gap</span></a></li>
+    </ol>
+  </nav>
 </div></header>
 <section class="p-sec"><div class="wrap">
   <h2>At a glance</h2>
@@ -68,7 +81,7 @@
     <li class="stat hi"><span class="k">Effect size</span><span class="v">1.63 <span class="u">Cohen&rsquo;s <i>d</i></span></span><span class="n">Real vs training, a large difference</span></li>
   </ul>
 </div></section>
-<section class="p-sec p-sec-alt"><div class="wrap">
+<section class="p-sec p-sec-alt" id="method" data-step><div class="wrap">
   <h2>The method in four steps</h2>
   <p class="sub">Quantitative ethnography: qualitative depth, quantified and made visual.</p>
   <ul class="flow c4">
@@ -78,7 +91,7 @@
     <li><h3>Model with ENA</h3><p>Code co-occurrences become a weighted network per category, compared statistically.</p></li>
   </ul><h3 style="margin:26px 0 12px;font-size:1.05rem">The four codes</h3><ul class="finds two"><li><span class="lab">Code</span><p class="big">Communication</p><p>Exchanging information, thoughts, feelings and needs through verbal and non-verbal interaction.</p></li><li><span class="lab">Code</span><p class="big">Empathy</p><p>Demonstrating deep understanding and genuine concern for the patient&rsquo;s emotional and psychological experience.</p></li><li><span class="lab">Code</span><p class="big">Flexibility</p><p>Adaptability, versatility and openness in the care approach.</p></li><li><span class="lab">Code</span><p class="big">Critical thinking</p><p>Analysing, evaluating and interpreting information about the patient&rsquo;s health and treatment.</p></li></ul>
 </div></section>
-<section class="p-sec"><div class="wrap">
+<section class="p-sec" id="findings" data-step><div class="wrap">
   <h2>What the networks showed</h2>
   <p class="sub">Both categories lean heavily on communication. What communication <em>connects to</em> is where they part ways.</p>
   <ul class="compare">
@@ -104,7 +117,7 @@
     <figure><img src="../assets/papers/icqe-2024/ena-scores.jpg" alt="Scatter of ENA scores for real (red) and training (blue) categories with mean centroids and confidence boxes" loading="lazy" decoding="async"><figcaption><b>Figure 1.</b> ENA scores per caregiver. Squares are mean centroids; the boxes are 95% confidence intervals. SVD1 explains 30.6% of the variance, SVD2 23.1%.</figcaption></figure>
   </ul>
 </div></section>
-<section class="p-sec"><div class="wrap">
+<section class="p-sec" id="takeaway" data-step><div class="wrap">
   <h2>Why this study exists</h2>
   <div class="takeaway"><h2>Takeaway</h2><p>The point of the interviews was need-finding: the team is building an immersive geriatric care simulation, and wanted to know which gaps it should close.</p><p>The answer was empathy. The paper&rsquo;s recommendation is to design training scenarios in which nursing students interpret and respond to a virtual patient&rsquo;s emotional state, with feedback they can reflect on afterwards.</p><p>Stated limitations: a small, exploratory sample, and caregivers&rsquo; perspectives only; older adults receiving the care were not interviewed.</p></div>
 </div></section>
@@ -119,6 +132,6 @@
   </span>
 </footer>
 
-<script src="../assets/main.js?v=3"></script>
+<script src="../assets/main.js?v=4"></script>
 </body>
 </html>

@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/style.css?v=4">
-<link rel="stylesheet" href="../assets/paper.css?v=1">
+<link rel="stylesheet" href="../assets/paper.css?v=2">
 <!-- Analytics: GoatCounter (privacy-friendly, no cookies) -->
 <script>window.GOATCOUNTER_CODE = "asifahmmedjoy";</script>
 <script data-goatcounter="https://asifahmmedjoy.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
@@ -55,6 +55,21 @@
     <li><a class="back" href="../publications.html">Publications</a></li>
   </ul>
   <p class="thesis">A life-sized older woman stands by the bed in a HoloLens. She knows the caregiver&rsquo;s name, notices the colour of their scrubs, and asks them to switch the lamp off. The project runs from the interviews that decided what she should say, through building her, to measuring what changes in the people who train with her.</p>
+  <aside class="plain">
+    <h2>In plain terms</h2>
+    <p>This is the main project &mdash; four years of work, six peer-reviewed papers, and a National Science Foundation award behind it.</p>
+    <p>Caregivers for older adults have to practise the human side of the job: how to speak, how to listen, how to read a room. There is no safe way to rehearse that on a real patient. So we built one that is not real. A life-sized older woman appears in the room through a HoloLens headset, and she <em>notices</em> things &mdash; your name, the colour of your scrubs, whether the lamp is still on.</p>
+    <p>The steps below follow the project in the order it happened: why it was needed, how she was built, how the work grew, and what the studies showed.</p>
+  </aside>
+  <nav class="walk" aria-label="Walkthrough steps">
+    <h2>Walk through it in 4 steps</h2>
+    <ol>
+      <li><a href="#why">Why the project exists<span class="why">The caregiving problem this addresses</span></a></li>
+      <li><a href="#how">How she works<span class="why">The system, part by part</span></a></li>
+      <li><a href="#timeline">How the project unfolded<span class="why">Four years, in order</span></a></li>
+      <li><a href="#findings">What the studies established together<span class="why">What six papers add up to</span></a></li>
+    </ol>
+  </nav>
 </div></header>
 <section class="p-sec"><div class="wrap">
   <h2>At a glance</h2>
@@ -65,7 +80,7 @@
     <li class="stat"><span class="k">Platform</span><span class="v">HoloLens 2</span><span class="n">Unity 3D, C#, MRTK</span></li>
   </ul>
 </div></section>
-<section class="p-sec p-sec-alt"><div class="wrap">
+<section class="p-sec p-sec-alt" id="why" data-step><div class="wrap">
   <h2>Why the project exists</h2>
   <p class="sub">The figures the papers open with.</p>
   <ul class="specs">
@@ -75,7 +90,7 @@
     <li><span class="v">34.2%</span><span class="k">Growth in the US population aged 65+ over a decade</span></li>
   </ul><p class="sub" style="margin:16px 0 0">Two of the most commonly named causes of that turnover are a lack of communication skills and inadequate training. Mannequins can simulate a body; they cannot hold a conversation, and hired actors are hard to schedule and harder to keep in character. That gap is what the simulation is for.</p>
 </div></section>
-<section class="p-sec"><div class="wrap">
+<section class="p-sec" id="how" data-step><div class="wrap">
   <h2>How she works</h2>
   <p class="sub">One Unity 3D framework, four moving parts. Full detail lives on the individual paper pages.</p>
   <ul class="flow c4">
@@ -92,7 +107,7 @@
     <li><span class="v">TCP sockets</span><span class="k">HoloLens as server, PC as client</span></li>
   </ul></div>
 </div></section>
-<section class="p-sec p-sec-alt"><div class="wrap">
+<section class="p-sec p-sec-alt" id="timeline" data-step><div class="wrap">
   <h2>How the project unfolded</h2>
   <p class="sub">Each step is a paper; the arc is need-finding, then building, then three different ways of asking whether it worked.</p>
   <ol class="tl">
@@ -106,7 +121,7 @@
     <li><span class="tl-stamp">Oct 2026</span><div class="tl-body"><h3>SimPathy at BehavXR, IEEE ISMAR</h3><p>Simulation design and evaluation of an aware embodied patient for caregivers&rsquo; soft-skills training, to be presented in Bari.</p></div></li>
   </ol>
 </div></section>
-<section class="p-sec"><div class="wrap">
+<section class="p-sec" id="findings" data-step><div class="wrap">
   <h2>What the studies established together</h2>
   <p class="sub">Four independent lines of evidence, none of which depends on the others.</p>
   <ul class="finds two">
@@ -137,7 +152,7 @@
     <figure><img src="../assets/papers/ismar-2024/pov.jpg" alt="The user's point of view of the virtual human, and the virtual human pointing at a lamp" loading="lazy" decoding="async"><figcaption>What the caregiver sees, and the moment she points at the lamp and asks for it to be switched off.</figcaption></figure>
   </ul>
 </div></section>
-<section class="p-sec"><div class="wrap">
+<section class="p-sec p-sec-alt"><div class="wrap">
   <h2>Funding</h2>
   <div class="takeaway"><h2>Supported by the National Science Foundation</h2><p>This work is supported by the U.S. National Science Foundation under the <strong>Future of Work at the Human-Technology Frontier (FW-HTF)</strong> program, awards <strong>#2222661</strong>, <strong>#2222662</strong> and <strong>#2222663</strong>, a collaboration between the New Jersey Institute of Technology, the University of Central Florida and the University of Delaware.</p><p>Open-access copies of the NSF-funded papers are deposited in the <a href="https://par.nsf.gov/">NSF Public Access Repository</a> and linked from each paper page.</p></div>
 </div></section>
@@ -152,6 +167,6 @@
   </span>
 </footer>
 
-<script src="../assets/main.js?v=3"></script>
+<script src="../assets/main.js?v=4"></script>
 </body>
 </html>

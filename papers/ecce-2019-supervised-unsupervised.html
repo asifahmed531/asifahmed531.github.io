@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/style.css?v=4">
-<link rel="stylesheet" href="../assets/paper.css?v=1">
+<link rel="stylesheet" href="../assets/paper.css?v=2">
 <!-- Analytics: GoatCounter (privacy-friendly, no cookies) -->
 <script>window.GOATCOUNTER_CODE = "asifahmmedjoy";</script>
 <script data-goatcounter="https://asifahmmedjoy.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
@@ -57,6 +57,19 @@
   </ul>
   <p class="thesis">PCA ignores class labels; LDA is built around them. Head to head on the Indian Pines scene, LDA holds up best on the held-out test set, from eight features, a 96.4% cut in dimensionality. Combining the two helps neither.</p>
   <p class="partof">Part of the project <a href="../projects/hyperspectral-dimensionality-reduction.html">Dimensionality Reduction for Hyperspectral Imaging</a></p>
+  <aside class="plain">
+    <h2>In plain terms</h2>
+    <p>A normal photo records three colours per pixel. The satellite image used here records <strong>220</strong>. That extra detail should make it easy to tell one crop from another &mdash; but it also means every pixel is described by 220 numbers, and there are only ever a few thousand labelled pixels to learn from. Given that imbalance, classifiers get <em>worse</em>, not better.</p>
+    <p>So the 220 numbers have to be compressed down to a handful that still carry what matters. This paper compares the two classic ways of doing that, and asks one question: does the compression do better if it is allowed to see the crop labels?</p>
+  </aside>
+  <nav class="walk" aria-label="Walkthrough steps">
+    <h2>Walk through it in 3 steps</h2>
+    <ol>
+      <li><a href="#methods">The two methods<span class="why">The two compression methods, side by side</span></a></li>
+      <li><a href="#results">Results<span class="why">How each one scored, and on what</span></a></li>
+      <li><a href="#takeaway">Takeaway<span class="why">What the comparison settles</span></a></li>
+    </ol>
+  </nav>
 </div></header>
 <section class="p-sec"><div class="wrap">
   <h2>At a glance</h2>
@@ -67,7 +80,7 @@
     <li class="stat"><span class="k">Dimensionality cut</span><span class="v">96.4 <span class="u">%</span></span><span class="n">LDA: 220 bands &rarr; 8 features</span></li>
   </ul>
 </div></section>
-<section class="p-sec p-sec-alt"><div class="wrap">
+<section class="p-sec p-sec-alt" id="methods" data-step><div class="wrap">
   <h2>The two methods</h2>
   <p class="sub">Both are feature extraction: they build new features rather than picking existing bands. The difference is whether the class labels get a vote.</p>
   <ul class="compare">
@@ -85,7 +98,7 @@
     </ul></li>
   </ul>
 </div></section>
-<section class="p-sec"><div class="wrap">
+<section class="p-sec" id="results" data-step><div class="wrap">
   <h2>Results</h2>
   <p class="sub">Nine of the sixteen ground-truth classes were used; the rest had too few training samples. Splits were identical across methods: 50% training, 30% independent test, 20% cross-validation, with <i>c</i> and &sigma; grid-searched over five runs per method.</p>
   <div class="chart"><h3>Three accuracy measures, three methods</h3><p class="cap">OA counts every correctly classified pixel; AA averages the nine per-class accuracies; ITA is the held-out independent test set. LDA leads where it counts most, on unseen data. The axis starts at 81%, not zero.</p><ul class="legend">
@@ -104,9 +117,9 @@
     <figure><img src="../assets/papers/ecce-2019/indian-pines.jpg" alt="The Indian Pines hyperspectral cube as a composite colour image and its ground reference map" loading="lazy" decoding="async"><figcaption><b>Figure 1.</b> The Indian Pines field &mdash; (a) the composite colour image with its stack of spectral bands, (b) the ground reference with each class labelled. The scene is about two-thirds agriculture and one-third forest and other perennial vegetation.</figcaption></figure>
   </ul>
 </div></section>
-<section class="p-sec"><div class="wrap">
+<section class="p-sec" id="takeaway" data-step><div class="wrap">
   <h2>Takeaway</h2>
-  <div class="takeaway"><h2>Takeaway</h2><p>Supervision pays where it matters. LDA generalises best to the independent test set from a third as many features as PCA needs, even though PCA edges it on overall accuracy over the full data.</p><p>Concatenating both feature sets is the worst of the three on every measure, so the two reductions are not complementary in this naive form.</p><p>The code and data for this study are public: <a href="https://github.com/joybi531/multiclass_SVM_classification_using_PCA_LDA/">joybi531/multiclass_SVM_classification_using_PCA_LDA</a>.</p></div>
+  <div class="takeaway"><p>Supervision pays where it matters. LDA generalises best to the independent test set from a third as many features as PCA needs, even though PCA edges it on overall accuracy over the full data.</p><p>Concatenating both feature sets is the worst of the three on every measure, so the two reductions are not complementary in this naive form.</p><p>The code and data for this study are public: <a href="https://github.com/joybi531/multiclass_SVM_classification_using_PCA_LDA/">joybi531/multiclass_SVM_classification_using_PCA_LDA</a>.</p></div>
 </div></section>
 <div class="wrap"><nav class="pnav"><a href="ic4me2-2019-hybrid-selection-extraction.html">&larr; Hybrid mRMR + PCA (IC4ME2 2019)</a><a href="../publications.html">All publications</a></nav></div>
 </main>
@@ -119,6 +132,6 @@
   </span>
 </footer>
 
-<script src="../assets/main.js?v=3"></script>
+<script src="../assets/main.js?v=4"></script>
 </body>
 </html>

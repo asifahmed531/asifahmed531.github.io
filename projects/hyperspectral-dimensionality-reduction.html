@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/style.css?v=4">
-<link rel="stylesheet" href="../assets/paper.css?v=1">
+<link rel="stylesheet" href="../assets/paper.css?v=2">
 <!-- Analytics: GoatCounter (privacy-friendly, no cookies) -->
 <script>window.GOATCOUNTER_CODE = "asifahmmedjoy";</script>
 <script data-goatcounter="https://asifahmmedjoy.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
@@ -55,6 +55,21 @@
     <li><a class="back" href="../publications.html">Publications</a></li>
   </ul>
   <p class="thesis">The Indian Pines scene carries 220 spectral bands and nowhere near enough labelled pixels to use them, so reducing the bands should help, and na&iuml;ve reduction makes things worse. Three papers work the problem from three angles; the last one beats the full-band baseline by 6.4 points.</p>
+  <aside class="plain">
+    <h2>In plain terms</h2>
+    <p>Undergraduate research: three papers, one stubborn problem.</p>
+    <p>Satellites photograph farmland in 220 separate colour bands rather than the usual three. That extra detail ought to make telling one crop from another easy &mdash; except that with only a few thousand labelled pixels available, 220 measurements per pixel is far too many, and accuracy collapses. Statisticians call this the <strong>curse of dimensionality</strong>.</p>
+    <p>Each of the three papers attacks it from a different angle. The third one finally beats the do-nothing baseline.</p>
+  </aside>
+  <nav class="walk" aria-label="Walkthrough steps">
+    <h2>Walk through it in 4 steps</h2>
+    <ol>
+      <li><a href="#problem">The problem<span class="why">Why more detail made results worse</span></a></li>
+      <li><a href="#attempts">Three attempts on the same problem<span class="why">What each paper tried</span></a></li>
+      <li><a href="#comparison">Every method, side by side<span class="why">All approaches on one scale</span></a></li>
+      <li><a href="#takeaway">What the three papers add up to<span class="why">The conclusion across all three</span></a></li>
+    </ol>
+  </nav>
 </div></header>
 <section class="p-sec"><div class="wrap">
   <h2>At a glance</h2>
@@ -65,7 +80,7 @@
     <li class="stat"><span class="k">Papers</span><span class="v">3</span><span class="n">IEEE ECCE, IEEE IC4ME2, ACM ICCA</span></li>
   </ul>
 </div></section>
-<section class="p-sec p-sec-alt"><div class="wrap">
+<section class="p-sec p-sec-alt" id="problem" data-step><div class="wrap">
   <h2>The problem</h2>
   <div class="chart-grid two"><div class="chart"><h3>The Hughes phenomenon</h3><p class="cap">Also called the curse of dimensionality.</p><p style="font-size:.93rem;color:var(--text-soft);margin:0">Hundreds of contiguous spectral bands, most of them highly correlated with their neighbours, and far fewer labelled training pixels than bands. The classifier generalises badly and accuracy falls as dimensionality rises, so the bands have to come down, without taking the class structure with them.</p></div><div class="chart"><h3>Indian Pines</h3><p class="cap">Captured by the AVIRIS sensor over north-western Indiana; roughly two thirds agriculture.</p><ul class="specs">
     <li><span class="v">145&times;145</span><span class="k">Pixels</span></li>
@@ -74,7 +89,7 @@
     <li><span class="v">16 &rarr; 9</span><span class="k">Classes used</span></li>
   </ul></div></div>
 </div></section>
-<section class="p-sec"><div class="wrap">
+<section class="p-sec" id="attempts" data-step><div class="wrap">
   <h2>Three attempts on the same problem</h2>
   <p class="sub">Each paper takes the previous one&rsquo;s weakness as its starting point.</p>
   <ol class="tl">
@@ -83,12 +98,12 @@
     <li><span class="tl-stamp">Jan 2020 &middot; ICCA</span><div class="tl-body"><h3>What if the scene is not one pool?</h3><p>Split the pixels by class, run PCA <em>inside</em> each class, take sixteen components from each and stack them back together. Overall accuracy 95.44%, which is 6.4 points above using all 220 bands, and nearly ten above plain PCA.</p></div></li>
   </ol>
 </div></section>
-<section class="p-sec p-sec-alt"><div class="wrap">
+<section class="p-sec p-sec-alt" id="comparison" data-step><div class="wrap">
   <h2>Every method, side by side</h2>
   <p class="sub">Overall accuracy on the same scene and the same nine classes, one-vs-rest SVM with an RBF kernel throughout. The grey bar is the do-nothing baseline: keep all 220 bands.</p>
   <div class="chart"><h3>Overall accuracy by dimensionality-reduction method</h3><p class="cap">Only class-wise PCA beats keeping every band. Three of the six reductions fall below it: reducing dimensions is not automatically a win.</p><div class="svg-wrap"><svg viewBox="0 0 700 272" role="img" aria-label="Class-wise PCA 95.44%, SVM, all 220 bands 89.02%, PCA &rarr; mRMR 87.72%, mRMR 86.60%, PCA 85.75%, LDA 84.91%, PCA + LDA 82.59%"><line x1="185.0" y1="0" x2="185.0" y2="246" stroke="var(--grid)" stroke-width="1"/><text x="185.0" y="262" text-anchor="middle" font-size="10.5" fill="var(--text-mute)" font-family="Inter,sans-serif">0%</text><line x1="293.8" y1="0" x2="293.8" y2="246" stroke="var(--grid)" stroke-width="1"/><text x="293.8" y="262" text-anchor="middle" font-size="10.5" fill="var(--text-mute)" font-family="Inter,sans-serif">25%</text><line x1="402.5" y1="0" x2="402.5" y2="246" stroke="var(--grid)" stroke-width="1"/><text x="402.5" y="262" text-anchor="middle" font-size="10.5" fill="var(--text-mute)" font-family="Inter,sans-serif">50%</text><line x1="511.2" y1="0" x2="511.2" y2="246" stroke="var(--grid)" stroke-width="1"/><text x="511.2" y="262" text-anchor="middle" font-size="10.5" fill="var(--text-mute)" font-family="Inter,sans-serif">75%</text><line x1="620.0" y1="0" x2="620.0" y2="246" stroke="var(--grid)" stroke-width="1"/><text x="620.0" y="262" text-anchor="middle" font-size="10.5" fill="var(--text-mute)" font-family="Inter,sans-serif">100%</text><text x="173" y="30.4" text-anchor="end" font-size="12.5" fill="var(--text-soft)" font-family="Inter,sans-serif">Class-wise PCA</text><path d="M185 16 h411.2 a4 4 0 0 1 4 4 v12 a4 4 0 0 1 -4 4 h-411.2 z" fill="var(--s3)"><title>Class-wise PCA: 95.44%</title></path><text x="608.2" y="30.8" font-size="12.5" font-weight="700" fill="var(--text)" font-family="Inter,sans-serif">95.44%</text><text x="173" y="64.4" text-anchor="end" font-size="12.5" fill="var(--text-soft)" font-family="Inter,sans-serif">SVM, all 220 bands</text><path d="M185 50 h383.2 a4 4 0 0 1 4 4 v12 a4 4 0 0 1 -4 4 h-383.2 z" fill="var(--border-strong)"><title>SVM, all 220 bands: 89.02%</title></path><text x="580.2" y="64.8" font-size="12.5" font-weight="700" fill="var(--text)" font-family="Inter,sans-serif">89.02%</text><text x="173" y="98.4" text-anchor="end" font-size="12.5" fill="var(--text-soft)" font-family="Inter,sans-serif">PCA &rarr; mRMR</text><path d="M185 84 h377.6 a4 4 0 0 1 4 4 v12 a4 4 0 0 1 -4 4 h-377.6 z" fill="var(--s1)"><title>PCA &rarr; mRMR: 87.72%</title></path><text x="574.6" y="98.8" font-size="12.5" font-weight="700" fill="var(--text)" font-family="Inter,sans-serif">87.72%</text><text x="173" y="132.4" text-anchor="end" font-size="12.5" fill="var(--text-soft)" font-family="Inter,sans-serif">mRMR</text><path d="M185 118 h372.7 a4 4 0 0 1 4 4 v12 a4 4 0 0 1 -4 4 h-372.7 z" fill="var(--s1)"><title>mRMR: 86.60%</title></path><text x="569.7" y="132.8" font-size="12.5" font-weight="700" fill="var(--text)" font-family="Inter,sans-serif">86.60%</text><text x="173" y="166.4" text-anchor="end" font-size="12.5" fill="var(--text-soft)" font-family="Inter,sans-serif">PCA</text><path d="M185 152 h369.0 a4 4 0 0 1 4 4 v12 a4 4 0 0 1 -4 4 h-369.0 z" fill="var(--s1)"><title>PCA: 85.75%</title></path><text x="566.0" y="166.8" font-size="12.5" font-weight="700" fill="var(--text)" font-family="Inter,sans-serif">85.75%</text><text x="173" y="200.4" text-anchor="end" font-size="12.5" fill="var(--text-soft)" font-family="Inter,sans-serif">LDA</text><path d="M185 186 h365.4 a4 4 0 0 1 4 4 v12 a4 4 0 0 1 -4 4 h-365.4 z" fill="var(--s2)"><title>LDA: 84.91%</title></path><text x="562.4" y="200.8" font-size="12.5" font-weight="700" fill="var(--text)" font-family="Inter,sans-serif">84.91%</text><text x="173" y="234.4" text-anchor="end" font-size="12.5" fill="var(--text-soft)" font-family="Inter,sans-serif">PCA + LDA</text><path d="M185 220 h355.3 a4 4 0 0 1 4 4 v12 a4 4 0 0 1 -4 4 h-355.3 z" fill="var(--s2)"><title>PCA + LDA: 82.59%</title></path><text x="552.3" y="234.8" font-size="12.5" font-weight="700" fill="var(--text)" font-family="Inter,sans-serif">82.59%</text><line x1="185" y1="0" x2="185" y2="246" stroke="var(--border-strong)" stroke-width="1"/></svg></div><details class="tv"><summary>Data table</summary><div class="tv-scroll"><table><thead><tr><th>Method</th><th>Features</th><th>Overall accuracy</th><th>Independent test</th><th>Reported in</th></tr></thead><tbody><tr><td>SVM, all bands</td><td>220</td><td>89.02%</td><td>&mdash;</td><td>ICCA 2020</td></tr><tr><td>PCA</td><td>21</td><td>85.75%</td><td>83.98%</td><td>ECCE / IC4ME2 / ICCA</td></tr><tr><td>LDA</td><td>8</td><td>84.91%</td><td>86.43%</td><td>ECCE 2019</td></tr><tr><td>PCA + LDA</td><td>29</td><td>82.59%</td><td>82.65%</td><td>ECCE 2019</td></tr><tr><td>mRMR</td><td>160</td><td>86.60%</td><td>83.11%</td><td>IC4ME2 2019</td></tr><tr><td>PCA &rarr; mRMR</td><td>21</td><td>87.72%</td><td>84.08%</td><td>IC4ME2 2019</td></tr><tr><td>Class-wise PCA</td><td>16 per class</td><td>95.44%</td><td>&mdash;</td><td>ICCA 2020</td></tr></tbody></table></div></details></div><p class="sub" style="margin-top:16px">Train and test splits differ slightly between the IC4ME2 paper and the other two, so the independent-test column is best compared within a paper rather than across all three. Plain PCA returns 85.75% in all three, which is a useful consistency check.</p>
 </div></section>
-<section class="p-sec"><div class="wrap">
+<section class="p-sec" id="takeaway" data-step><div class="wrap">
   <h2>What the three papers add up to</h2>
   <ul class="finds two">
     <li><span class="lab">The counter-intuitive result</span><p class="big">Reduction can cost you accuracy</p><p>Plain PCA on 21 components scored more than three points <em>below</em> simply keeping all 220 bands. Variance is not the same thing as class separability.</p></li>
@@ -123,6 +138,6 @@
   </span>
 </footer>
 
-<script src="../assets/main.js?v=3"></script>
+<script src="../assets/main.js?v=4"></script>
 </body>
 </html>

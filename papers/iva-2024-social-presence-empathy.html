@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/style.css?v=4">
-<link rel="stylesheet" href="../assets/paper.css?v=1">
+<link rel="stylesheet" href="../assets/paper.css?v=2">
 <!-- Analytics: GoatCounter (privacy-friendly, no cookies) -->
 <script>window.GOATCOUNTER_CODE = "asifahmmedjoy";</script>
 <script data-goatcounter="https://asifahmmedjoy.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
@@ -57,6 +57,20 @@
   </ul>
   <p class="thesis">If a virtual patient remembers your name and notices the room around her, do caregivers feel more <em>present with</em> her, and more empathetic? This pilot measured both, before and after, with the same sixteen people.</p>
   <p class="partof">Part of the project <a href="../projects/geriatric-virtual-human-simulation.html">Embodied Virtual Human Simulation for Caregiver Training</a></p>
+  <aside class="plain">
+    <h2>In plain terms</h2>
+    <p>When a virtual person notices you &mdash; uses your name, reacts to the room &mdash; does that change how real they feel? And does it change how you treat them?</p>
+    <p>This is a small pilot that measures exactly that. The same sixteen people met the virtual patient twice, once without awareness and once with it, and rated both encounters on two established scales: one for how present the virtual person felt, one for their own empathy.</p>
+  </aside>
+  <nav class="walk" aria-label="Walkthrough steps">
+    <h2>Walk through it in 4 steps</h2>
+    <ol>
+      <li><a href="#measures">The two things being measured<span class="why">Social presence and empathy, defined</span></a></li>
+      <li><a href="#study">How the session ran<span class="why">The order of the two encounters</span></a></li>
+      <li><a href="#findings">What the pilot found<span class="why">What moved, and what did not</span></a></li>
+      <li><a href="#takeaway">Where it goes next<span class="why">Why this was a pilot, and what follows</span></a></li>
+    </ol>
+  </nav>
 </div></header>
 <section class="p-sec"><div class="wrap">
   <h2>At a glance</h2>
@@ -67,12 +81,12 @@
     <li class="stat"><span class="k">Social presence</span><span class="v">36 <span class="u">items</span></span><span class="n">Networked Minds, 6 dimensions, 6-point</span></li>
   </ul>
 </div></section>
-<section class="p-sec p-sec-alt"><div class="wrap">
+<section class="p-sec p-sec-alt" id="measures" data-step><div class="wrap">
   <h2>The two things being measured</h2>
   <p class="sub">Both are established instruments, administered around the interactions rather than during them.</p>
   <ul class="finds two"><li><span class="lab">Empathy</span><p class="big">Jefferson Scale of Empathy</p><p>Twenty questions on a 7-point Likert scale, completed <em>before the first</em> scenario and <em>after the second</em> &mdash; so it brackets the whole session.</p></li><li><span class="lab">Social presence</span><p class="big">Networked Minds measure</p><p>Thirty-six questions across six dimensions, completed <em>after each</em> scenario, so the unaware and aware agents can be compared directly.</p></li></ul>
 </div></section>
-<section class="p-sec"><div class="wrap">
+<section class="p-sec" id="study" data-step><div class="wrap">
   <h2>How the session ran</h2>
   <p class="sub">A room set up as a geriatric care facility: a bed, side tables, a remote-controlled lamp and radio, and a partition hiding the operator. Conditions were deliberately <em>not</em> counterbalanced: showing the aware agent first risked nursing participants reading the unaware agent as a dementia patient.</p>
   <ul class="flow c4">
@@ -82,7 +96,7 @@
     <li><h3>Post-test</h3><p>Social presence after each scenario; empathy again at the end.</p></li>
   </ul>
 </div></section>
-<section class="p-sec p-sec-alt"><div class="wrap">
+<section class="p-sec p-sec-alt" id="findings" data-step><div class="wrap">
   <h2>What the pilot found</h2>
   <p class="sub">The paper reports preliminary, directional results: increases in scores rather than test statistics.</p>
   <ul class="finds two">
@@ -97,7 +111,7 @@
     <figure><img src="../assets/papers/iva-2024/model.jpg" alt="Full-body views of the 3D model of the virtual agent and a set of body gestures" loading="lazy" decoding="async"><figcaption><b>Figure 2.</b> Two full views of the agent&rsquo;s 3D model from different angles, with body gestures on the right.</figcaption></figure>
   </ul>
 </div></section>
-<section class="p-sec"><div class="wrap">
+<section class="p-sec p-sec-alt" id="takeaway" data-step><div class="wrap">
   <h2>Where it goes next</h2>
   <div class="takeaway"><h2>Takeaway</h2><p>A virtual patient that simply <em>appears</em> to be aware, through a hidden operator rather than any AI, is enough to move caregivers&rsquo; reported empathy and sense of being with another person.</p><p>Named limitations: a small sample, an imbalanced gender distribution that reflects the nursing population, a limited set of pre-recorded responses, and by-design non-counterbalanced conditions.</p><p>The stated next step is replacing the Wizard-of-Oz operator with a large language model, which would widen the conversational range and remove the cost of a human operator.</p></div>
 </div></section>
@@ -112,6 +126,6 @@
   </span>
 </footer>
 
-<script src="../assets/main.js?v=3"></script>
+<script src="../assets/main.js?v=4"></script>
 </body>
 </html>

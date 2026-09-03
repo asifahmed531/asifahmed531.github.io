@@ -75,4 +75,31 @@
       })
       .catch(function () { /* decorative — stay silent */ });
   }
+
+  /* ---- reading progress on walkthrough pages ---- */
+  if (document.body.classList.contains('viz-root')) {
+    var bar = document.createElement('div');
+    bar.className = 'readbar';
+    bar.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(bar);
+
+    var ticking = false;
+    var update = function () {
+      var doc = document.documentElement;
+      var scrollable = doc.scrollHeight - window.innerHeight;
+      var pct = scrollable > 0 ? (window.pageYOffset / scrollable) * 100 : 0;
+      bar.style.width = Math.max(0, Math.min(100, pct)) + '%';
+      ticking = false;
+    };
+    var onScroll = function () {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(update);
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    update();
+  }
+
 })();

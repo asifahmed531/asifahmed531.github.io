@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/style.css?v=4">
-<link rel="stylesheet" href="../assets/paper.css?v=1">
+<link rel="stylesheet" href="../assets/paper.css?v=2">
 <!-- Analytics: GoatCounter (privacy-friendly, no cookies) -->
 <script>window.GOATCOUNTER_CODE = "asifahmmedjoy";</script>
 <script data-goatcounter="https://asifahmmedjoy.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
@@ -57,6 +57,21 @@
   </ul>
   <p class="thesis">The demo paper for the system: how an embodied older adult is modelled, animated, driven by a human in the loop over a TCP link, and made to seem aware of the room and of the conversation.</p>
   <p class="partof">Part of the project <a href="../projects/geriatric-virtual-human-simulation.html">Embodied Virtual Human Simulation for Caregiver Training</a></p>
+  <aside class="plain">
+    <h2>In plain terms</h2>
+    <p>This paper describes how the system is put together, rather than what it achieves. It is the engineering tour.</p>
+    <p>It walks through each part: how the virtual older adult is modelled and animated, how an operator hidden from the participant chooses what she says, and what makes her appear to notice the room and remember the conversation.</p>
+  </aside>
+  <nav class="walk" aria-label="Walkthrough steps">
+    <h2>Walk through it in 5 steps</h2>
+    <ol>
+      <li><a href="#why">The demographic pressure behind it<span class="why">Why this system is worth building</span></a></li>
+      <li><a href="#pipeline">How a reply reaches the user<span class="why">From operator click to spoken reply</span></a></li>
+      <li><a href="#model">What is in the model<span class="why">How the virtual human is built</span></a></li>
+      <li><a href="#awareness">Awareness, concretely<span class="why">What she actually notices, itemised</span></a></li>
+      <li><a href="#takeaway">Feedback and next steps<span class="why">What the pilot audience said</span></a></li>
+    </ol>
+  </nav>
 </div></header>
 <section class="p-sec"><div class="wrap">
   <h2>At a glance</h2>
@@ -67,7 +82,7 @@
     <li class="stat"><span class="k">Display</span><span class="v">HoloLens 2</span><span class="n">Unity 3D, C#</span></li>
   </ul>
 </div></section>
-<section class="p-sec p-sec-alt"><div class="wrap">
+<section class="p-sec p-sec-alt" id="why" data-step><div class="wrap">
   <h2>The demographic pressure behind it</h2>
   <p class="sub">Two figures from the paper&rsquo;s motivation section.</p>
   <ul class="specs">
@@ -75,7 +90,7 @@
     <li><span class="v">23.4%</span><span class="k">Predicted share of the US population aged 65+ by 2034</span></li>
   </ul>
 </div></section>
-<section class="p-sec"><div class="wrap">
+<section class="p-sec" id="pipeline" data-step><div class="wrap">
   <h2>How a reply reaches the user</h2>
   <p class="sub">A human controller listens live and presses a button; everything downstream is automatic.</p>
   <ul class="flow c4">
@@ -85,7 +100,7 @@
     <li><h3>Virtual human answers</h3><p>A custom plugin fires the audio, visemes, facial expression and body gesture together.</p></li>
   </ul>
 </div></section>
-<section class="p-sec p-sec-alt"><div class="wrap">
+<section class="p-sec p-sec-alt" id="model" data-step><div class="wrap">
   <h2>What is in the model</h2>
   <p class="sub">All figures from the paper&rsquo;s description of the 3D asset.</p>
   <ul class="specs">
@@ -97,7 +112,7 @@
     <li><span class="v">13</span><span class="k">Viseme groups for lip sync</span></li>
   </ul><div class="chart-grid two" style="margin-top:18px"><div class="chart"><h3>Visemes rigged as blend shapes</h3><p class="cap">Mouth shapes driven by the SALSA LipSync suite as the audio plays.</p><ul class="tags"><li>p-m-b</li><li>f-v</li><li>t-d</li><li>k-g</li><li>ch</li><li>a</li><li>s</li><li>n</li><li>l</li><li>r</li><li>e-ih</li><li>o</li><li>th</li></ul></div><div class="chart"><h3>Expressions and body animations</h3><p class="cap">Emotions complemented by nuanced actions and everyday gestures.</p><ul class="tags"><li>happiness</li><li>anger</li><li>sadness</li><li>surprise</li><li>brow raising</li><li>blinking</li><li>waving</li><li>sitting</li><li>pointing</li></ul></div></div>
 </div></section>
-<section class="p-sec"><div class="wrap">
+<section class="p-sec" id="awareness" data-step><div class="wrap">
   <h2>Awareness, concretely</h2>
   <p class="sub">Three mechanisms give the impression that the virtual human notices things.</p>
   <ul class="flow c3 plain">
@@ -113,7 +128,7 @@
     <figure><img src="../assets/papers/vrw-2024/workflow.jpg" alt="Interaction workflow diagram showing speech, button press, response database and the HoloLens" loading="lazy" decoding="async"><figcaption><b>Figure 2.</b> The user interaction workflow, showing what happens behind the scenes between the user speaking and the virtual human replying.</figcaption></figure>
   </ul>
 </div></section>
-<section class="p-sec"><div class="wrap">
+<section class="p-sec" id="takeaway" data-step><div class="wrap">
   <h2>Feedback and next steps</h2>
   <div class="takeaway"><h2>Takeaway</h2><p>Twenty professional caregivers ran through predefined scenarios. Feedback was positive on user friendliness, interactivity and the realism of the virtual human; the asks were for mobility and a broader range of responses.</p><p>The paper frames the technology as generalisable: any application where a person needs to interact with a human or a stand-in for one, from healthcare providers simulating patients to virtual assistants.</p><p>Next: training content for difficult situations, and generative AI to manage the virtual human&rsquo;s responses in place of the operator.</p></div>
 </div></section>
@@ -128,6 +143,6 @@
   </span>
 </footer>
 
-<script src="../assets/main.js?v=3"></script>
+<script src="../assets/main.js?v=4"></script>
 </body>
 </html>

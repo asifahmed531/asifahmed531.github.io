@@ -253,3 +253,90 @@ table.mx .yes{color:var(--s3);font-weight:700;font-size:1.05rem}
 }
 .btn-solid:hover{background:var(--accent-hover);color:#fff;text-decoration:none}
 .cta-note{font-size:.85rem;color:var(--text-mute)}
+
+/* ============================================================
+   Guided walkthrough
+   Detail pages read as a numbered walk rather than a pile of
+   sections: a plain-language opener, a step index, numbered
+   step headings, and a reading-progress bar.
+   ============================================================ */
+
+/* Plain-language opener, for a reader who knows nothing about the field.
+   Sits below .thesis and is deliberately cooler in tone so the two boxes
+   do not compete. */
+.plain{
+  margin:18px 0 0;padding:16px 20px;max-width:74ch;
+  background:var(--blue-soft);border:1px solid rgba(18,87,196,.16);
+  border-radius:var(--radius);
+}
+.plain h2{
+  font-family:var(--font-body);font-size:.7rem;font-weight:700;
+  letter-spacing:.09em;text-transform:uppercase;color:var(--blue);
+  margin:0 0 7px;
+}
+.plain p{margin:0;font-size:.95rem;line-height:1.62;color:var(--text-soft)}
+.plain p + p{margin-top:9px}
+
+/* Step index: the walk in miniature, before the reader commits to it. */
+.walk{
+  margin:22px 0 0;padding:18px 22px;max-width:74ch;
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--radius);box-shadow:var(--shadow);
+}
+.walk h2{
+  font-family:var(--font-body);font-size:.7rem;font-weight:700;
+  letter-spacing:.09em;text-transform:uppercase;color:var(--text-mute);
+  margin:0 0 12px;
+}
+.walk ol{counter-reset:wk;list-style:none;margin:0;padding:0;display:grid;gap:2px}
+.walk li{counter-increment:wk;margin:0}
+.walk li a{
+  display:flex;align-items:baseline;gap:11px;
+  padding:7px 9px;border-radius:var(--radius-sm);
+  color:var(--text);font-size:.93rem;line-height:1.45;
+}
+.walk li a::before{
+  content:counter(wk);flex:none;
+  display:inline-flex;align-items:center;justify-content:center;
+  width:21px;height:21px;border-radius:50%;
+  background:var(--bg-sunk);color:var(--text-mute);
+  font-size:.7rem;font-weight:700;
+  transform:translateY(2px);
+}
+.walk li a:hover{background:var(--bg-sunk);text-decoration:none}
+.walk li a:hover::before{background:var(--accent);color:#fff}
+.walk .why{display:block;color:var(--text-mute);font-size:.84rem;margin-top:1px}
+
+/* Numbered step headings. The counter runs over the narrative sections
+   only, so reference sections (At a glance, Figures) do not consume a
+   step number. */
+main{counter-reset:walkstep}
+.p-sec[data-step]{counter-increment:walkstep}
+.p-sec[data-step]>.wrap>h2::before{
+  content:"Step " counter(walkstep);
+  display:block;font-family:var(--font-body);
+  font-size:.7rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:6px;
+}
+
+/* Anchor targets clear the sticky nav. */
+.p-sec[id]{scroll-margin-top:74px}
+
+/* Reading progress. Width is set from script; with no script the bar
+   stays at zero width and is simply never seen. */
+.readbar{
+  position:fixed;top:60px;left:0;height:2px;width:0;
+  background:var(--accent);z-index:99;
+  transition:width .1s linear;
+}
+
+@media (max-width:600px){
+  .walk{padding:15px 16px}
+  .plain{padding:14px 16px}
+}
+@media (prefers-reduced-motion:reduce){
+  .readbar{transition:none}
+}
+@media print{
+  .walk,.readbar{display:none}
+}
